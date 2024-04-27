@@ -31,10 +31,10 @@
                             <div class="card shadow">
                                 <div class="card-body">
                                     <form action="<?= base_url('data_administrasi/store'); ?>" method="post">
-                                    <div class="form-group">
+                                        <div class="form-group">
                                             <label class="form-label" for="pelayanan">Pilih Layanan</label>
                                             <select class="form-control form-control-lg" id="pelayanan" name="pelayanan">
-                                                <option >--- Silahkan Pilih Pelayanan ---</option>
+                                                <option>--- Silahkan Pilih Pelayanan ---</option>
                                                 <option value="pembaharuan_kk">Pembaharuan KK</option>
                                                 <option value="surat_keterangan_pindah">Surat Keterangan Pindah</option>
                                                 <option value="perekaman_ktp">Perekaman KTP</option>
@@ -43,10 +43,7 @@
                                                 <option value="pembuatan_akte_kematian">Pembuatan Akte Kematian</option>
                                             </select>
                                         </div><br>
-                                        <div class="form-group">
-                                            <label for="nama_layanan" class="form-label">Nama Pelayanan</label>
-                                            <input type="text" class="form-control" id="nama_layanan" name="nama_layanan" placeholder="Masukan Nama Pelayanan">
-                                        </div><br>
+
                                         <div class="form-group">
                                             <label class="form-label" for="nama">Nama Lengkap</label>
                                             <input class="form-control form-control-lg" type="text" id="nama" name="nama" placeholder="Masukan Nama Lengkap" />
