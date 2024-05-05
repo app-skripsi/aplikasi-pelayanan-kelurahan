@@ -125,10 +125,6 @@
                             </select>
                           </div><br>
                           <div class="form-group">
-                            <label for="nama_layanan" class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="nama_layanan" name="nama_layanan" placeholder="Masukan Nama " required>
-                          </div><br>
-                          <div class="form-group">
                             <label class="form-label" for="nama">Nama Lengkap</label>
                             <input class="form-control form-control-lg" type="text" id="nama" name="nama" placeholder="Masukan Nama Lengkap" style="margin-top: 10px;" required> <!-- Menambahkan required di sini -->
                           </div><br>

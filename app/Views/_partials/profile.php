@@ -15,17 +15,14 @@
 								data-bs-toggle="dropdown">
 								<img src="<?php echo base_url("img/avatars/avatar.jpg"); ?>" class="avatar img-fluid rounded me-1"
 									alt="Charles Hall" /> <span class="text-dark"><?= session()->get('nama_user'); ?> | <?php if (session()->get('level') == 1) {
-                                                                                                                        echo 'Admin';
+                                                                                                                        echo 'Admin 1';
                                                                                                                     } elseif (session()->get('level') == 2) {
-                                                                                                                        echo 'Ketua';
+                                                                                                                        echo 'Admin 2';
                                                                                                                     } else {
                                                                                                                         echo 'Guest';
                                                                                                                     } ?></span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="#"><i class="align-middle me-1"
-										data-feather="user"></i> Profile</a>
-								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="<?php echo base_url('/login'); ?>">Log out</a>
 							</div>
 						</li>

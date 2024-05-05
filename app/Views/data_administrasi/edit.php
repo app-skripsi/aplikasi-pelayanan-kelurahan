@@ -67,11 +67,15 @@
                                             <label class="form-label" for="status">Status</label>
                                             <select class="form-control form-control-lg" name="status" id="status">
                                                 <option value=""></option>
+                                                <?php if(session()->get('level') == 1) { ?>
                                                 <option value="waiting" <?php echo (isset($data_administrasi['status']) && $data_administrasi['status'] == 'waiting') ? 'selected' : ''; ?>>Waiting</option>
                                                 <option value="proses" <?php echo (isset($data_administrasi['status']) && $data_administrasi['status'] == 'proses') ? 'selected' : ''; ?>>Proses</option>
+                                                <?php } ?>
+                                                <?php if(session()->get('level') == 2) { ?>
                                                 <option value="verifikasi" <?php echo (isset($data_administrasi['status']) && $data_administrasi['status'] == 'verifikasi') ? 'selected' : ''; ?>>Verifikasi</option>
                                                 <option value="eksekusi" <?php echo (isset($data_administrasi['status']) && $data_administrasi['status'] == 'eksekusi') ? 'selected' : ''; ?>>Eksekusi</option>
                                                 <option value="done" <?php echo (isset($data_administrasi['status']) && $data_administrasi['status'] == 'done') ? 'selected' : ''; ?>>Done</option>
+                                                <?php } ?>
                                             </select>
                                         </div><br>
                                         <div class="form-group">

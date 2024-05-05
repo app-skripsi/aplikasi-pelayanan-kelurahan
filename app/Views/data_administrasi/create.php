@@ -67,14 +67,17 @@
                                         <div class="form-group">
                                             <label class="form-label" for="status">Status</label>
                                             <select class="form-control form-control-lg" id="status" name="status">
+                                            <?php if(session()->get('level') == 1) { ?>
                                                 <option value="waiting">Waiting</option>
                                                 <option value="proses">Proses</option>
+                                                <?php } ?>
+                                                <?php if(session()->get('level') == 2) { ?>
                                                 <option value="verifikasi">Verifikasi</option>
                                                 <option value="eksekusi">Eksekusi</option>
                                                 <option value="done">Done</option>
+                                                <?php } ?>
                                             </select>
                                         </div><br>
-
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
                                 </div>
