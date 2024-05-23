@@ -87,18 +87,20 @@
             <div class="icon-box">
               <div class="icon"><i class="fas fa-heartbeat"></i></div>
               <h4><a href="#">Pembaharuan Kartu Keluarga</a></h4>
-              <ol><p><b>Syarat Memperbarui Kartu Keluarga (Menambah Anggota)</b></p></ol>
-              <li>KK yang lama atau fotokopi KK yang sudah dilegalisir</li>
-              <li>Surat Pengantar dari RT/RW</li>
-              <li>Surat Keterangan Lahir dari rumah sakit</li>
-              <li>Fotokopi akta kelahiran orang tua</li><br>
-              <ol><p><b>Syarat Memperbarui Kartu Keluarga (Anggota Keluarga Berkurang)</b></p></ol>
-                <li>Surat Pengantar RT/RW</li>
-                <li>Kartu Keluarga Lama</li>
-                <li>Surat Keterangan Kematian (jika anggota keluarga meninggal)</li>
-                <li>Surat Keterangan pindah (jika anggota keluarga pindah)</li>
-                <li>Surat keterangan datang dari luar negeri (untuk yang datang dari mancanegara)</li>
-                <li>Anggota keluarga yang menumpang di kartu keluarga</li>
+              <ol><h3><b>Syarat Menambah Anggota</b></h3></ol>
+                <li>1.Kartu keluarga lama (jika hilang, lampirkan surat kehilangan dari polsek beserta Fc Kartu keluarga)</li>
+                <li>2.fotocopy Ktp anggota Keluarga </li>
+                <li>3.fotocopy buku nikah/Akta perkawinan (jika menikah)</li>
+                <li>4.fotocopy ijasah terakhir(jika ada embaruan pendidikan)</li>
+                <li>5.fotocopy akta lahir yang ingin ditambahkan anggotanya</li>
+                <li>6.fotocopy akta lahir kelahiran anggota  keluarga(jika nama orang tua di Kartu keluarga belum tercatat dikolom nama orang tua di Kartu Keluarga)</li><br>
+              <ol><h3><b>Syarat Anggota Keluarga Berkurang</b></h3></ol>
+                <li>1.Kartu keluarga lama (jika hilang, lampirkan surat kehilangan dari polsek beserta Fc Kartu keluarga) </li>
+                <li>2.fotocopy Ktp anggota Keluarga </li>
+                <li>3.fotocopy buku nikah/Akta perkawinan (jika menikah)</li>
+                <li>4.fotocooy ijasah terakhir(jika ada embaruan pendidikan)</li>
+                <li>5.fotocopy akta lahir yang ingin ditambahkan anggotanya</li>
+                <li>6.fotocopy akta lahir kelahiran anggota keluarga(jika nama orang tua di Kartu keluarga belum  tercatat dikolom nama orang tua di Kartu Keluarga)</li>
               </div>
           </div>
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">

@@ -14,17 +14,21 @@
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                 </a>
             </li>
-
+            <?php if (session()->get('level') == 1) { ?>
             <li class="sidebar-item">
                 <a class="sidebar-link" href="<?php echo base_url('/data_administrasi'); ?>">
                     <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Data Administrasi</span>
                 </a>
             </li>
+            <?php } ?>
+
+            <?php if (session()->get('level') == 2) { ?>
             <li class="sidebar-item">
                 <a class="sidebar-link" href="<?php echo base_url('/data_administrasi/report'); ?>">
                     <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Data Rekam Administrasi</span>
                 </a>
             </li>
+            <?php } ?>
         </ul>
     </div>
 </nav>

@@ -12,7 +12,9 @@
                     <div class="mb-3 d-flex justify-content-between align-items-center">
                         <h1 class="h3">Data Rekam Administrasi</h1>
                         <div>
+                        <?php if (session()->get('level') == 1) { ?>
                             <a class="btn btn-dark text-white" href="<?php echo base_url('/data_administrasi') ?>">Lihat Data</a>
+                        <?php } ?>
                         </div>
                     </div>
 

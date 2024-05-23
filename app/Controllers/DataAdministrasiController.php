@@ -75,8 +75,6 @@ class DataAdministrasiController extends BaseController
 		return view('register');
 	}
 
-
-
 	public function pendaftaran()
 	{
 		$validation =  \Config\Services::validation();
