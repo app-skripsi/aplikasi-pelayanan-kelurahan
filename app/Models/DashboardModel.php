@@ -11,8 +11,4 @@ class DashboardModel extends Model
 	{
 		return $this->db->table("data_administrasi")->countAll();
 	}
-    public function getCountRekamAdministrasi()
-	{
-		return $this->db->table("data_rekam_administrasi")->countAll();
-	}
 }

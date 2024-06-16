@@ -16,6 +16,13 @@ class Data extends Seeder
 				'password'	=> 'yakub001',
 				'level'		=> 1
 			],
+			[
+				'id'		=> 2,
+				'nama_user'	=> 'Ali',
+				'username'	=> 'ali001',
+				'password'	=> 'ali001',
+				'level'		=> 2
+			],
 		];
 
 		$this->db->table('users')->insertBatch($users);

@@ -35,23 +35,26 @@ class DataAdministrator extends Migration
                 'constraint' => 255,
                 'null' => TRUE,
             ],
-            'status'                => [
-                'type'               => 'enum',
-                'constraint'        => "'waiting','proses','verifikasi','eksekusi','done'",
-                'null' => TRUE,
-
+            'status_id' => [
+                'type' => 'INT',
+                'constraint'        => 5,
+                'unsigned'          => true,
+                'null'              => true,
             ],
             'kedatangan' => [
                 'type' => 'DATE',
                 'null' => TRUE,
             ],
-            'pelayanan' => [
-                'type'               => 'enum',
-                'constraint'        => "'pembaharuan_kk','surat_keterangan_pindah','perekaman_ktp','pembuatan_kia','pembuatan_akte_lahir','pembuatan_akte_kematian'",
-                'null' => TRUE
+            'pelayanan_id' => [
+                'type' => 'INT',
+                'constraint'        => 5,
+                'unsigned'          => true,
+                'null'              => true,
             ],
         ]);
         $this->forge->addKey('id', TRUE);
+        $this->forge->addForeignKey('pelayanan_id', 'pelayanan', 'id', 'cascade', 'cascade');
+        $this->forge->addForeignKey('status_id', 'status', 'id', 'cascade', 'cascade');
         $this->forge->createTable('data_administrasi', TRUE);
     }
     public function down()

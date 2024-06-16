@@ -11,15 +11,28 @@ class DataAdministrasiModel extends Model
 	{
 		if ($id === false) {
 			return $this->table('data_administrasi')
+				->join('status', 'status.id = data_administrasi.status_id')
+				->join('pelayanan', 'pelayanan.id = data_administrasi.pelayanan_id')
 				->get()
 				->getResultArray();
 		} else {
 			return $this->table('data_administrasi')
+				->join('status', 'status.id = data_administrasi.status_id')
+				->join('pelayanan', 'pelayanan.id = data_administrasi.pelayanan_id')
 				->where('data_administrasi.id', $id)
 				->get()
 				->getRowArray();
 		}
 	}
+
+	public function getAllAdministrasi()
+    {
+        return $this->select('data_administrasi.*, jenis.nama as nama_jenis')
+					->join('status', 'status.id = data_administrasi.status_id')
+					->join('pelayanan', 'pelayanan.id = data_administrasi.pelayanan_id')
+                    ->findAll();
+    }	
+
 	public function insertData($data)
 	{
 		return $this->db->table($this->table)->insert($data);
