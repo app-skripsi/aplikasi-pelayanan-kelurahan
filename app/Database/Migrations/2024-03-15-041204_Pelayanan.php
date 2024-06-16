@@ -15,7 +15,7 @@ class Pelayanan extends Migration
                 'unsigned' => TRUE,
                 'auto_increment' => TRUE
             ],
-            'nama' => [
+            'pelayanan' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
                 'null' => TRUE,

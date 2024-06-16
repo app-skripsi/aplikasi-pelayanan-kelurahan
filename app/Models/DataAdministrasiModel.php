@@ -26,12 +26,13 @@ class DataAdministrasiModel extends Model
 	}
 
 	public function getAllAdministrasi()
-    {
-        return $this->select('data_administrasi.*, jenis.nama as nama_jenis')
+	{
+		return $this->select('data_administrasi.*, jenis.nama as nama_jenis, pelayanan.pelayanan as nama_pelayanan')
 					->join('status', 'status.id = data_administrasi.status_id')
+					->join('jenis', 'jenis.id = data_administrasi.jenis_id')
 					->join('pelayanan', 'pelayanan.id = data_administrasi.pelayanan_id')
-                    ->findAll();
-    }	
+					->findAll();
+	}
 
 	public function insertData($data)
 	{
