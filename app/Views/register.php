@@ -113,17 +113,14 @@
                         <div class="card-body">
                           <?php echo form_open_multipart('data_administrasi/pendaftaran'); ?>
                           <div class="form-group">
-                            <label class="form-label" for="pelayanan">Pilih Layanan</label>
-                            <select class="form-control form-control-lg" id="pelayanan" name="pelayanan">
-                            <option>--- Pilih Pelayanan ---</option>
-                              <option value="pembaharuan_kk">Pembaharuan KK</option>
-                              <option value="surat_keterangan_pindah">Surat Keterangan Pindah</option>
-                              <option value="perekaman_ktp">Perekaman KTP</option>
-                              <option value="pembuatan_kia">Pembuatan KIA</option>
-                              <option value="pembuatan_akte_lahir">Pembuatan Akte Lahir</option>
-                              <option value="pembuatan_akte_kematian">Pembuatan Akte Kematian</option>
-                            </select>
-                          </div><br>
+                                        <label class="form-label" for="pelayanan_id">Pilih pelayanan </label>
+                                        <select class="form-control" id="pelayanan_id" name="pelayanan_id">
+                                            <option value="">Pilih pelayanan</option> <!-- Tambahkan opsi ini -->
+                                            <?php foreach ($pelayanan as $pelayananItem): ?>
+                                                <option value="<?= $pelayananItem['id']; ?>"><?= $pelayananItem['pelayanan']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div><br>
                           <div class="form-group">
                             <label class="form-label" for="nama">Nama Lengkap</label>
                             <input class="form-control form-control-lg" type="text" id="nama" name="nama" placeholder="Masukan Nama Lengkap" style="margin-top: 10px;" required> <!-- Menambahkan required di sini -->

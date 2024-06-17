@@ -25,6 +25,36 @@ class Data extends Seeder
 			],
 		];
 
-		$this->db->table('users')->insertBatch($users);
+       // Check if users data already exists
+	   $existingUsers = $this->db->table('users')->countAllResults();
+	   if ($existingUsers == 0) {
+		   $this->db->table('users')->insertBatch($users);
+	   }
+
+		$data_pelayanan = [
+            [
+                'pelayanan' => 'Pembaharuan KK'
+            ],
+            [
+                'pelayanan' => 'Surat Keterangan Pindah'
+            ],
+            [
+                'pelayanan' => 'Perekaman KTP'
+            ],
+            [
+                'pelayanan' => 'Pembuatan KIA'
+            ],
+            [
+                'pelayanan' => 'Pembuatan Akte Lahir'
+            ],
+            [
+                'pelayanan' => 'Pembuatan Akte Kematian'
+            ],
+        ];
+        // Check if pelayanan data already exists
+        $existingPelayanan = $this->db->table('pelayanan')->countAllResults();
+        if ($existingPelayanan == 0) {
+            $this->db->table('pelayanan')->insertBatch($data_pelayanan);
+        }
 	}
 }

@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\DataAdministrasiModel;
 use App\Models\PelayananModel;
-use App\Models\StatusModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use TCPDF;
@@ -15,20 +14,18 @@ class DataAdministrasiController extends BaseController
 
 	protected $data_administrasi;
 	protected $pelayanan;
-	protected $jenis;
 
 	public function __construct()
 	{
 		helper(['form']);
 		$this->data_administrasi = new DataAdministrasiModel();
 		$this->pelayanan = new PelayananModel();
-		$this->status = new StatusModel();
 	}
 
 	public function index()
 	{
-		$data['data_administrasi'] = $this->data_administrasi->select('data_administrasi.*, jenis.nama as nama,  pelayanan.pelayanan as nama_pelayanan')
-			->join('jenis', 'jenis.id = arsip.jenis_id')
+		$data['data_administrasi'] = $this->data_administrasi->select('data_administrasi.*, pelayanan.pelayanan as nama_pelayanan')
+			->join('pelayanan', 'pelayanan.id = data_administrasi.pelayanan_id')
 			->findAll();
 		return view('data_administrasi/index', $data);
 	}
@@ -40,9 +37,7 @@ class DataAdministrasiController extends BaseController
 
 	public function create()
 	{
-		$jenis = $this->jenis->findAll();
 		$pelayanan = $this->pelayanan->findAll();
-		$data = ['jenis' => $jenis];
 		$data = ['pelayanan' => $pelayanan];
 		return view('data_administrasi/create', $data);
 	}
@@ -61,7 +56,7 @@ class DataAdministrasiController extends BaseController
 			'kk' => $this->request->getPost('kk'),
 			'alamat' => $this->request->getPost('alamat'),
 			'kedatangan' => $this->request->getPost('kedatangan'),
-			'status_id' => $this->request->getPost('status_id'),
+			'status' => $this->request->getPost('status'),
 			'pelayanan_id' => $this->request->getPost('pelayanan_id'),
 		);
 
@@ -86,9 +81,7 @@ class DataAdministrasiController extends BaseController
 			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
 			return redirect()->to(base_url('login'));
 		}
-		$jenis = $this->jenis->findAll();
 		$pelayanan = $this->pelayanan->findAll();
-		$data['jenis'] = ['' => 'Pilih jenis'] + array_column($jenis, 'nama', 'id');
 		$data['pelayanan'] = ['' => 'Pilih pelayanan'] + array_column($pelayanan, 'pelayanan', 'id');
 		$data['data_administrasi'] = $this->data_administrasi->getData($id);
 		return view('data_administrasi/edit', $data);
@@ -97,7 +90,9 @@ class DataAdministrasiController extends BaseController
 
 	public function registrasiPelayanan()
 	{
-		return view('register');
+		$pelayanan = $this->pelayanan->findAll();
+		$data = ['pelayanan' => $pelayanan];
+		return view('register', $data);
 	}
 
 	public function pendaftaran()
@@ -110,7 +105,7 @@ class DataAdministrasiController extends BaseController
 			'alamat' => $this->request->getPost('alamat'),
 			'kedatangan' => $this->request->getPost('kedatangan'),
 			'pelayanan_id' => $this->request->getPost('pelayanan_id'),
-			'status_id' => $this->request->getPost('status_id')
+			'status' => $this->request->getPost('status')
 		);
 		if ($validation->run($data, 'data_administrasi') == FALSE) {
 			session()->setFlashdata('inputs', $this->request->getPost());
@@ -130,18 +125,24 @@ class DataAdministrasiController extends BaseController
 
 	public function update()
 	{
+				// proteksi halaman
+				if (session()->get('username') == '') {
+					session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
+					return redirect()->to(base_url('login'));
+				}
 		$id = $this->request->getPost('id');
 
 		$validation = \Config\Services::validation();
 
 		$data = array(
+		/* The above code snippet is written in PHP and appears to be assigning values to an array using the `->request->getPost()` method. The keys in the array are 'pelayanan_id', 'nama', 'nik', 'kk', 'alamat', 'kedatangan', and 'status', and the corresponding values are retrieved from the POST data using the `getPost()` method. */
+			'pelayanan_id' => $this->request->getPost('pelayanan_id'),
 			'nama' => $this->request->getPost('nama'),
 			'nik' => $this->request->getPost('nik'),
 			'kk' => $this->request->getPost('kk'),
 			'alamat' => $this->request->getPost('alamat'),
 			'kedatangan' => $this->request->getPost('kedatangan'),
-			'status_id' => $this->request->getPost('status_id'),
-			'pelayanan_id' => $this->request->getPost('pelayanan_id'),
+			'status' => $this->request->getPost('status')
 		);
 
 		if ($validation->run($data, 'data_administrasi') == FALSE) {
@@ -243,7 +244,7 @@ class DataAdministrasiController extends BaseController
 				->setCellValue('E' . $column, $data_administrasis['alamat'])
 				->setCellValue('F' . $column, $data_administrasis['status'])
 				->setCellValue('G' . $column, $data_administrasis['kedatangan'])
-				->setCellValue('H' . $column, $data_administrasis['pelayanan'])
+				->setCellValue('H' . $column, $data_administrasis['nama_pelayanan'])
 			;
 
 			// Set auto numbering on the left side of the data

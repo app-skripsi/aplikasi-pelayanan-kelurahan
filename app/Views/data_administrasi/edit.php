@@ -22,7 +22,7 @@
                                 <div class="alert alert-danger" role="alert">
                                     Whoops! Ada kesalahan saat input data, yaitu:
                                     <ul>
-                                        <?php foreach ($errors as $error) : ?>
+                                        <?php foreach ($errors as $error): ?>
                                             <li><?= esc($error) ?></li>
                                         <?php endforeach ?>
                                     </ul>
@@ -30,51 +30,57 @@
                             <?php } ?>
                             <div class="card shadow">
                                 <div class="card-body">
-                                    <form action="<?= site_url('data_administrasi/update/' . $data_administrasi['id']); ?>" method="post">
-                                    <?php echo form_hidden('id', $data_administrasi['id']); ?>
+                                    <form
+                                        action="<?= site_url('data_administrasi/update/' . $data_administrasi['id']); ?>" method="post">
+                                        <?php echo form_hidden('id', $data_administrasi['id']); ?>
                                         <div class="form-group">
-                                            <label class="form-label" for="pelayanan">Pilih Layanan</label>
-                                            <select class="form-control form-control-lg" id="layanan" name="pelayanan">
-                                                <option value="pembaharuan_kk" <?php echo (isset($data_administrasi['pelayanan']) && $data_administrasi['pelayanan'] == 'pembaharuan_kk') ? 'selected' : ''; ?>>Pembaharuan KK</option>
-                                                <option value="surat_keterangan_pindah" <?php echo (isset($data_administrasi['pelayanan']) && $data_administrasi['pelayanan'] == 'surat_keterangan_pindah') ? 'selected' : ''; ?>>Surat Keterangan Pindah</option>
-                                                <option value="perekaman_ktp" <?php echo (isset($data_administrasi['pelayanan']) && $data_administrasi['pelayanan'] == 'perekaman_ktp') ? 'selected' : ''; ?>>Perekaman KTP</option>
-                                                <option value="pembuatan_kia" <?php echo (isset($data_administrasi['pelayanan']) && $data_administrasi['pelayanan'] == 'pembuatan_kia') ? 'selected' : ''; ?>>Pembuatan KIA</option>
-                                                <option value="pembuatan_akte_lahir" <?php echo (isset($data_administrasi['pelayanan']) && $data_administrasi['pelayanan'] == 'pembuatan_akte_lahir') ? 'selected' : ''; ?>>Pembuatan Akte Lahir</option>
-                                                <option value="pembuatan_akte_kematian" <?php echo (isset($data_administrasi['pelayanan']) && $data_administrasi['pelayanan'] == 'pembuatan_akte_kematian') ? 'selected' : ''; ?>>Pembuatan Akte Kematian</option>
-                                            </select>
+                                            <?php echo form_label('Pelayanan', 'pelayanan_id'); ?>
+                                            <?php echo form_dropdown('pelayanan_id', $pelayanan, $data_administrasi['pelayanan_id'], ['class' => 'form-control']); ?>
                                         </div><br>
                                         <div class="form-group">
                                             <label class="form-label" for="nama">Nama Lengkap</label>
-                                            <input class="form-control form-control-lg" type="text" id="nama" name="nama" value="<?php echo isset($data_administrasi['nama']) ? $data_administrasi['nama'] : ''; ?>" />
+                                            <input class="form-control form-control-lg" type="text" id="nama"
+                                                name="nama"
+                                                value="<?php echo isset($data_administrasi['nama']) ? $data_administrasi['nama'] : ''; ?>" />
                                         </div>
                                         <div class="form-group"><br>
                                             <label class="form-label" for="nik">No NIK</label>
-                                            <input class="form-control form-control-lg" type="text" id="nik" name="nik" value="<?php echo isset($data_administrasi['nik']) ? $data_administrasi['nik'] : ''; ?>" />
+                                            <input class="form-control form-control-lg" type="text" id="nik" name="nik"
+                                                value="<?php echo isset($data_administrasi['nik']) ? $data_administrasi['nik'] : ''; ?>" />
                                         </div>
                                         <div class="form-group"><br>
                                             <label class="form-label" for="kk">No KK</label>
-                                            <input class="form-control form-control-lg" type="text" id="kk" name="kk" value="<?php echo isset($data_administrasi['kk']) ? $data_administrasi['kk'] : ''; ?>" />
+                                            <input class="form-control form-control-lg" type="text" id="kk" name="kk"
+                                                value="<?php echo isset($data_administrasi['kk']) ? $data_administrasi['kk'] : ''; ?>" />
                                         </div>
                                         <div class="form-group"><br>
                                             <label class="form-label" for="alamat">Alamat Lengkap</label>
-                                            <input class="form-control form-control-lg" type="text" id="alamat" name="alamat" value="<?php echo isset($data_administrasi['alamat']) ? $data_administrasi['alamat'] : ''; ?>" />
+                                            <input class="form-control form-control-lg" type="text" id="alamat"
+                                                name="alamat"
+                                                value="<?php echo isset($data_administrasi['alamat']) ? $data_administrasi['alamat'] : ''; ?>" />
                                         </div>
                                         <div class="form-group"><br>
                                             <label class="form-label" for="kedatangan">Tanggal Kedatangan</label>
-                                            <input class="form-control form-control-lg" type="date"  id="kedatangan"  name="kedatangan" value="<?php echo isset($data_administrasi['kedatangan']) ? $data_administrasi['kedatangan'] : ''; ?>" />
+                                            <input class="form-control form-control-lg" type="date" id="kedatangan"
+                                                name="kedatangan"
+                                                value="<?php echo isset($data_administrasi['kedatangan']) ? $data_administrasi['kedatangan'] : ''; ?>" />
                                         </div><br>
                                         <div class="form-group">
                                             <label class="form-label" for="status">Status</label>
                                             <select class="form-control form-control-lg" name="status" id="status">
-                                                <option value=""></option>
-                                                <?php if(session()->get('level') == 1) { ?>
-                                                <option value="waiting" <?php echo (isset($data_administrasi['status']) && $data_administrasi['status'] == 'waiting') ? 'selected' : ''; ?>>Waiting</option>
-                                                <option value="proses" <?php echo (isset($data_administrasi['status']) && $data_administrasi['status'] == 'proses') ? 'selected' : ''; ?>>Proses</option>
+                                                <?php if (session()->get('level') == 1) { ?>
+                                                    <option value="waiting" <?php echo (isset($data_administrasi['status']) && $data_administrasi['status'] == 'waiting') ? 'selected' : ''; ?>>
+                                                        Waiting</option>
+                                                    <option value="proses" <?php echo (isset($data_administrasi['status']) && $data_administrasi['status'] == 'proses') ? 'selected' : ''; ?>>
+                                                        Proses</option>
                                                 <?php } ?>
-                                                <?php if(session()->get('level') == 2) { ?>
-                                                <option value="verifikasi" <?php echo (isset($data_administrasi['status']) && $data_administrasi['status'] == 'verifikasi') ? 'selected' : ''; ?>>Verifikasi</option>
-                                                <option value="eksekusi" <?php echo (isset($data_administrasi['status']) && $data_administrasi['status'] == 'eksekusi') ? 'selected' : ''; ?>>Eksekusi</option>
-                                                <option value="done" <?php echo (isset($data_administrasi['status']) && $data_administrasi['status'] == 'done') ? 'selected' : ''; ?>>Done</option>
+                                                <?php if (session()->get('level') == 2) { ?>
+                                                    <option value="verifikasi" <?php echo (isset($data_administrasi['status']) && $data_administrasi['status'] == 'verifikasi') ? 'selected' : ''; ?>>
+                                                        Verifikasi</option>
+                                                    <option value="eksekusi" <?php echo (isset($data_administrasi['status']) && $data_administrasi['status'] == 'eksekusi') ? 'selected' : ''; ?>>
+                                                        Eksekusi</option>
+                                                    <option value="done" <?php echo (isset($data_administrasi['status']) && $data_administrasi['status'] == 'done') ? 'selected' : ''; ?>>Done
+                                                    </option>
                                                 <?php } ?>
                                             </select>
                                         </div><br>

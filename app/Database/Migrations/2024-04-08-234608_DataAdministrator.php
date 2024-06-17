@@ -35,11 +35,10 @@ class DataAdministrator extends Migration
                 'constraint' => 255,
                 'null' => TRUE,
             ],
-            'status_id' => [
-                'type' => 'INT',
-                'constraint'        => 5,
-                'unsigned'          => true,
-                'null'              => true,
+            'status' => [
+                'type'       => 'ENUM',
+                'constraint' => ['waiting', 'proses', 'verifikasi', 'eksekusi', 'done'],
+                'null'       => true,
             ],
             'kedatangan' => [
                 'type' => 'DATE',
@@ -54,7 +53,6 @@ class DataAdministrator extends Migration
         ]);
         $this->forge->addKey('id', TRUE);
         $this->forge->addForeignKey('pelayanan_id', 'pelayanan', 'id', 'cascade', 'cascade');
-        $this->forge->addForeignKey('status_id', 'status', 'id', 'cascade', 'cascade');
         $this->forge->createTable('data_administrasi', TRUE);
     }
     public function down()

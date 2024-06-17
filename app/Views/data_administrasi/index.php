@@ -39,7 +39,7 @@
                                                 <?php foreach ($data_administrasi as $key => $row) { ?>
                                                     <tr>
                                                         <td class="text-left"><?php echo $key + 1; ?></td>
-                                                        <td class="text-left"><?php echo $row['pelayanan']; ?></td>
+                                                        <td class="text-left"><?php echo $row['nama_pelayanan']; ?></td>
                                                         <td class="text-left"><?php echo $row['nama']; ?></td>
                                                         <td class="text-left"><?php echo $row['nik']; ?></td>
                                                         <td class="text-left"><?php echo $row['kk']; ?></td>
