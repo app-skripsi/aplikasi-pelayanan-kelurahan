@@ -68,6 +68,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="status">Status</label>
                                             <select class="form-control form-control-lg" name="status" id="status">
+                                                <option value=""></option>
                                                 <?php if (session()->get('level') == 1) { ?>
                                                     <option value="waiting" <?php echo (isset($data_administrasi['status']) && $data_administrasi['status'] == 'waiting') ? 'selected' : ''; ?>>
                                                         Waiting</option>

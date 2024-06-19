@@ -44,11 +44,6 @@ class DataAdministrasiController extends BaseController
 
 	public function store()
 	{
-		// proteksi halaman
-		if (session()->get('username') == '') {
-			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-			return redirect()->to(base_url('login'));
-		}
 		$validation = \Config\Services::validation();
 		$data = array(
 			'nama' => $this->request->getPost('nama'),
@@ -76,14 +71,9 @@ class DataAdministrasiController extends BaseController
 
 	public function edit($id)
 	{
-		// proteksi halaman
-		if (session()->get('username') == '') {
-			session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-			return redirect()->to(base_url('login'));
-		}
 		$pelayanan = $this->pelayanan->findAll();
 		$data['pelayanan'] = ['' => 'Pilih pelayanan'] + array_column($pelayanan, 'pelayanan', 'id');
-		$data['data_administrasi'] = $this->data_administrasi->getData($id);
+		$data['data_administrasi'] = $this->data_administrasi->find($id);
 		return view('data_administrasi/edit', $data);
 	}
 
@@ -125,17 +115,11 @@ class DataAdministrasiController extends BaseController
 
 	public function update()
 	{
-				// proteksi halaman
-				if (session()->get('username') == '') {
-					session()->setFlashdata('harus login', 'Silahkan Login Terlebih Dahulu');
-					return redirect()->to(base_url('login'));
-				}
 		$id = $this->request->getPost('id');
 
 		$validation = \Config\Services::validation();
 
 		$data = array(
-		/* The above code snippet is written in PHP and appears to be assigning values to an array using the `->request->getPost()` method. The keys in the array are 'pelayanan_id', 'nama', 'nik', 'kk', 'alamat', 'kedatangan', and 'status', and the corresponding values are retrieved from the POST data using the `getPost()` method. */
 			'pelayanan_id' => $this->request->getPost('pelayanan_id'),
 			'nama' => $this->request->getPost('nama'),
 			'nik' => $this->request->getPost('nik'),
@@ -153,14 +137,7 @@ class DataAdministrasiController extends BaseController
 			$ubah = $this->data_administrasi->updateData($data, $id);
 			if ($ubah) {
 				session()->setFlashdata('success', 'Update Data Berhasil');
-				// Sweet Alert success
-				session()->setFlashdata('alert', 'success');
 				return redirect()->to(base_url('data_administrasi'));
-			} else {
-				session()->setFlashdata('error', 'Gagal mengupdate data');
-				// Sweet Alert error
-				session()->setFlashdata('alert', 'error');
-				return redirect()->to(base_url('data_administrasi/edit/' . $id));
 			}
 		}
 	}
