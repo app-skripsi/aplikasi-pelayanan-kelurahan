@@ -7,9 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="shortcut icon" href="logo.png" />
-    <link href="logo.png" rel="icon">
-    <link href="logo.png" rel="apple-touch-icon">
+	<link rel="shortcut icon" href="<?php echo base_url("img/icons/icon-48x48.png"); ?>" />
+
 
     <title>LogIn | SIADMINDUK</title>
 
