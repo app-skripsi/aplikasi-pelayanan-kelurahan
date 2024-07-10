@@ -46,14 +46,14 @@
                                         </div>
                                         <div class="form-group"><br>
                                             <label class="form-label" for="nik">No NIK</label>
-                                            <input class="form-control form-control-lg" type="text" id="nik" name="nik"
+                                            <input class="form-control form-control-lg" type="number" id="nik" name="nik"
                                                 placeholder="Masukan No NIK" style="margin-top: 10px;" maxlength="16"
                                                 oninput="validateLength(this)"
                                                 value="<?php echo isset($data_administrasi['nik']) ? $data_administrasi['nik'] : ''; ?>" />
                                         </div>
                                         <div class="form-group"><br>
                                             <label class="form-label" for="kk">No KK</label>
-                                            <input class="form-control form-control-lg" type="text" id="kk" name="kk"
+                                            <input class="form-control form-control-lg" type="number" id="kk" name="kk"
                                                 placeholder="Masukan No KK" style="margin-top: 10px;" maxlength="16"
                                                 oninput="validateLength(this)"
                                                 value="<?php echo isset($data_administrasi['kk']) ? $data_administrasi['kk'] : ''; ?>" />
