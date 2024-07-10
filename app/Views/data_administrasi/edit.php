@@ -107,13 +107,14 @@
 
     <?php echo view("_partials/script"); ?>
     <script>
-        function validateLength(input) {
-            if (input.value.length > 16) {
-                alert("Panjang melebihi batas maksimal 16 angka.");
-                input.value = input.value.slice(0, 16);
-            }
-        }
-    </script>
+  function validateLength(input) {
+    input.value = input.value.replace(/\D/g, '');
+    if (input.value.length > 16) {
+      alert("Panjang melebihi batas maksimal 16 angka.");
+      input.value = input.value.slice(0, 16);
+    }
+  }
+</script>
 </body>
 
 </html>
