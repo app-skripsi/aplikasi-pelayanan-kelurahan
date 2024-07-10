@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-	<link rel="shortcut icon" href="<?php echo base_url("logo.png"); ?>" />
+  <link rel="shortcut icon" href="<?php echo base_url("logo.png"); ?>" />
 
   <!-- Google Fonts -->
   <link
@@ -190,7 +190,7 @@
           e.preventDefault(); // Hindari pengiriman form
           Swal.fire({
             title: 'Terima kasih!',
-            text: 'Pendaftaran berhasil dilakukan. Silahkan kunjungi kelurahan sesuai dengan tanggal kedatangan anda :)',
+            text: 'Registrasi anda berhasil dilakukan, Pihak kelurahan akan memberi infomasi kepada anda melalui whatsapps admin (Done)',
             icon: 'success',
             confirmButtonText: 'OK'
           }).then(() => {

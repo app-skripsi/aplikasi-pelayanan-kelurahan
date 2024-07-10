@@ -22,7 +22,7 @@
                                 <div class="alert alert-danger" role="alert">
                                     Whoops! Ada kesalahan saat input data, yaitu:
                                     <ul>
-                                        <?php foreach ($errors as $error) : ?>
+                                        <?php foreach ($errors as $error): ?>
                                             <li><?= esc($error) ?></li>
                                         <?php endforeach ?>
                                     </ul>
@@ -31,46 +31,57 @@
                             <div class="card shadow">
                                 <div class="card-body">
                                     <form action="<?= base_url('data_administrasi/store'); ?>" method="post"><br>
-                                    <div class="form-group">
-                                        <label class="form-label" for="pelayanan_id">Pilih pelayanan </label>
-                                        <select class="form-control" id="pelayanan_id" name="pelayanan_id">
-                                            <option value="">Pilih pelayanan</option> <!-- Tambahkan opsi ini -->
-                                            <?php foreach ($pelayanan as $pelayananItem): ?>
-                                                <option value="<?= $pelayananItem['id']; ?>"><?= $pelayananItem['pelayanan']; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div><br>
+                                        <div class="form-group">
+                                            <label class="form-label" for="pelayanan_id">Pilih pelayanan </label>
+                                            <select class="form-control" id="pelayanan_id" name="pelayanan_id">
+                                                <option value="">Pilih pelayanan</option> <!-- Tambahkan opsi ini -->
+                                                <?php foreach ($pelayanan as $pelayananItem): ?>
+                                                    <option value="<?= $pelayananItem['id']; ?>">
+                                                        <?= $pelayananItem['pelayanan']; ?>
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div><br>
                                         <div class="form-group">
                                             <label class="form-label" for="nama">Nama Lengkap</label>
-                                            <input class="form-control form-control-lg" type="text" id="nama" name="nama" placeholder="Masukan Nama Lengkap" />
+                                            <input class="form-control form-control-lg" type="text" id="nama"
+                                                name="nama" placeholder="Masukan Nama Lengkap" />
                                         </div><br>
                                         <div class="form-group">
-                                            <label class="form-label" for="nik">No NIK</label>
-                                            <input class="form-control form-control-lg" type="text" id="nik" name="nik" placeholder="Masukan No NIK" />
-                                        </div><br>
+                                            <label class="form-label" for="nik">*<b>No NIK</b></label>
+                                            <input class="form-control form-control-lg" type="number" id="nik"
+                                                name="nik" placeholder="Masukan No NIK" style="margin-top: 10px;"
+                                                maxlength="16" oninput="validateLength(this)" required>
+                                        </div>
+                                        <br>
                                         <div class="form-group">
-                                            <label class="form-label" for="kk">No KK</label>
-                                            <input class="form-control form-control-lg" type="text" id="kk" name="kk" placeholder="Masukan No KK" />
-                                        </div><br>
+                                            <label class="form-label" for="kk">*<b>No KK</b></label>
+                                            <input class="form-control form-control-lg" type="number" id="kk" name="kk"
+                                                placeholder="Masukan No KK" style="margin-top: 10px;" maxlength="16"
+                                                oninput="validateLength(this)" required>
+                                        </div>
                                         <div class="form-group">
                                             <label class="form-label" for="alamat">Alamat Lengkap</label>
-                                            <input class="form-control form-control-lg" type="text" id="alamat" name="alamat" placeholder="Masukan Alamat Lengkap" />
+                                            <input class="form-control form-control-lg" type="text" id="alamat"
+                                                name="alamat" placeholder="Masukan Alamat Lengkap" />
                                         </div><br>
                                         <div class="form-group">
                                             <label class="form-label" for="kedatangan">Tanggal Kedatangan</label><br>
-                                            <input class="form-control form-control-lg" type="date" value="kedatangan" name="kedatangan" />
+                                            <input class="form-control form-control-lg" type="date" value="kedatangan"
+                                                name="kedatangan" />
                                         </div><br>
                                         <div class="form-group">
                                             <label class="form-label" for="status">Status</label>
                                             <select class="form-control form-control-lg" id="status" name="status">
-                                            <?php if(session()->get('level') == 1) { ?>
-                                                <option value="waiting">Waiting</option>
-                                                <option value="proses">Proses</option>
+                                                <?php if (session()->get('level') == 1) { ?>
+                                                    <option value="waiting">Waiting</option>
+                                                    <option value="proses">Proses</option>
                                                 <?php } ?>
-                                                <?php if(session()->get('level') == 2) { ?>
-                                                <option value="verifikasi">Verifikasi</option>
-                                                <option value="eksekusi">Eksekusi</option>
-                                                <option value="done">Done</option>
+                                                <?php if (session()->get('level') == 2) { ?>
+                                                    <option value="verifikasi">Verifikasi</option>
+                                                    <option value="eksekusi">Eksekusi</option>
+                                                    <option value="valid">Valid</option>
+                                                    <option value="done">Done</option>
                                                 <?php } ?>
                                             </select>
                                         </div><br>
@@ -89,7 +100,14 @@
     </div>
 
     <?php echo view("_partials/script"); ?>
-
+    <script>
+        function validateLength(input) {
+            if (input.value.length > 16) {
+                alert("Panjang melebihi batas maksimal 16 angka.");
+                input.value = input.value.slice(0, 16);
+            }
+        }
+    </script>
 </body>
 
 </html>

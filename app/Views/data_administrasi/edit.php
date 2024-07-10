@@ -31,7 +31,8 @@
                             <div class="card shadow">
                                 <div class="card-body">
                                     <form
-                                        action="<?= site_url('data_administrasi/update/' . $data_administrasi['id']); ?>" method="post">
+                                        action="<?= site_url('data_administrasi/update/' . $data_administrasi['id']); ?>"
+                                        method="post">
                                         <?php echo form_hidden('id', $data_administrasi['id']); ?>
                                         <div class="form-group">
                                             <?php echo form_label('Pelayanan', 'pelayanan_id'); ?>
@@ -46,11 +47,15 @@
                                         <div class="form-group"><br>
                                             <label class="form-label" for="nik">No NIK</label>
                                             <input class="form-control form-control-lg" type="text" id="nik" name="nik"
+                                                placeholder="Masukan No NIK" style="margin-top: 10px;" maxlength="16"
+                                                oninput="validateLength(this)"
                                                 value="<?php echo isset($data_administrasi['nik']) ? $data_administrasi['nik'] : ''; ?>" />
                                         </div>
                                         <div class="form-group"><br>
                                             <label class="form-label" for="kk">No KK</label>
                                             <input class="form-control form-control-lg" type="text" id="kk" name="kk"
+                                                placeholder="Masukan No KK" style="margin-top: 10px;" maxlength="16"
+                                                oninput="validateLength(this)"
                                                 value="<?php echo isset($data_administrasi['kk']) ? $data_administrasi['kk'] : ''; ?>" />
                                         </div>
                                         <div class="form-group"><br>
@@ -80,6 +85,8 @@
                                                         Verifikasi</option>
                                                     <option value="eksekusi" <?php echo (isset($data_administrasi['status']) && $data_administrasi['status'] == 'eksekusi') ? 'selected' : ''; ?>>
                                                         Eksekusi</option>
+                                                    <option value="valid" <?php echo (isset($data_administrasi['status']) && $data_administrasi['status'] == 'valid') ? 'selected' : ''; ?>>
+                                                        Valid</option>
                                                     <option value="done" <?php echo (isset($data_administrasi['status']) && $data_administrasi['status'] == 'done') ? 'selected' : ''; ?>>Done
                                                     </option>
                                                 <?php } ?>
@@ -99,7 +106,14 @@
     </div>
 
     <?php echo view("_partials/script"); ?>
-
+    <script>
+        function validateLength(input) {
+            if (input.value.length > 16) {
+                alert("Panjang melebihi batas maksimal 16 angka.");
+                input.value = input.value.slice(0, 16);
+            }
+        }
+    </script>
 </body>
 
 </html>
