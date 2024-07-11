@@ -4,7 +4,7 @@
     <div class="wrapper">
         <?php echo view("_partials/navbar"); ?>
         <div class="main">
-        <?php echo view("_partials/profile"); ?>
+            <?php echo view("_partials/profile"); ?>
 
             <main class="content">
                 <div class="container-fluid p-0">
@@ -30,6 +30,8 @@
                                                     <th>Nik</th>
                                                     <th>KK</th>
                                                     <th>Alamat</th>
+                                                    <th>Nomor Telephone</th>
+                                                    <th>Email</th>
                                                     <th>Kedatangan</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
@@ -44,6 +46,8 @@
                                                         <td class="text-left"><?php echo $row['nik']; ?></td>
                                                         <td class="text-left"><?php echo $row['kk']; ?></td>
                                                         <td class="text-left"><?php echo $row['alamat']; ?></td>
+                                                        <td class="text-left"><?php echo $row['no_telephone']; ?></td>
+                                                        <td class="text-left"><?php echo $row['email']; ?></td>
                                                         <td class="text-left"><?php echo $row['kedatangan']; ?></td>
                                                         <td class="text-left"><?php echo $row['status']; ?></td>
                                                         <td class="text-center">

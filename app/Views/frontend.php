@@ -9,11 +9,11 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <!-- Favicons -->	
-	<link rel="shortcut icon" href="<?php echo base_url("logo.png"); ?>" />
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="<?php echo base_url("logo.png"); ?>" />
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -43,7 +43,9 @@
         <a href="https://www.instagram.com/kelurahanjatiwarna?igsh=MW9pYmZhYXd3cDcxZw==" class="instagram"><i class="bi bi-instagram"></i> Instagram | </a>
       </div>
     </div>
-    <marquee scrollamount="8" style="background-color: grey; color: white; font-style: Times New Roman;"><h4>Selamat menggunakan sistem pelayanan Adminduk, Silahkan pilih menu informasi layanan, untuk mengetahui informasi layanan di kelurahan jatiwarna</h4></marquee>
+    <marquee scrollamount="8" style="background-color: grey; color: white; font-style: Times New Roman;">
+      <h4>Selamat menggunakan sistem pelayanan Adminduk, Silahkan pilih menu informasi layanan, untuk mengetahui informasi layanan di kelurahan jatiwarna</h4>
+    </marquee>
   </div>
 
   <!-- ======= Header ======= -->
@@ -53,7 +55,7 @@
       <h1 class="logo me-auto"><a href="<?php echo base_url("/"); ?>">SIADMINDUK</a></h1>
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="<?php  echo base_url("/"); ?>">Home</a></li>
+          <li><a class="nav-link scrollto active" href="<?php echo base_url("/"); ?>">Home</a></li>
           <li><a class="nav-link scrollto" href="<?php echo base_url("/informasi-pelayanan"); ?>">Informasi Layanan</a></li>
           <li><a class="nav-link scrollto" href="<?php echo base_url("/registrasi-pelayanan"); ?>">Registrasi Pelayanan</a></li>
         </ul>
@@ -70,12 +72,12 @@
     <div class="container text-center white">
       <h1>SIADMINDUK</h1>
       <h2>Akses Pelayanan untuk masyarakat Kelurahan Jatiwarna Kini Lebih Mudah</h2>
-      <a href="<?php  echo base_url("/informasi-pelayanan"); ?>" class="btn-get-started scrollto">Baca, informasi layanan <i class='fas fa-angle-double-right'></i></a>
+      <a href="<?php echo base_url("/informasi-pelayanan"); ?>" class="btn-get-started scrollto">Baca, informasi layanan <i class='fas fa-angle-double-right'></i></a>
     </div>
   </section><!-- End Hero -->
 
   <main id="main">
-      
+
   </main><!-- End #main -->
 
   <!-- Vendor JS Files -->

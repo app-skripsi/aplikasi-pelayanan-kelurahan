@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class DashboardModel extends Model
 {
 
-    public function getCountAdministrasi()
+	public function getCountAdministrasi()
 	{
 		return $this->db->table("data_administrasi")->countAll();
 	}

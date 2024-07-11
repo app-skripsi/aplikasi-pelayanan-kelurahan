@@ -22,7 +22,7 @@
                                 <div class="alert alert-danger" role="alert">
                                     Whoops! Ada kesalahan saat input data, yaitu:
                                     <ul>
-                                        <?php foreach ($errors as $error): ?>
+                                        <?php foreach ($errors as $error) : ?>
                                             <li><?= esc($error) ?></li>
                                         <?php endforeach ?>
                                     </ul>
@@ -30,9 +30,7 @@
                             <?php } ?>
                             <div class="card shadow">
                                 <div class="card-body">
-                                    <form
-                                        action="<?= site_url('data_administrasi/update/' . $data_administrasi['id']); ?>"
-                                        method="post">
+                                    <form action="<?= site_url('data_administrasi/update/' . $data_administrasi['id']); ?>" method="post">
                                         <?php echo form_hidden('id', $data_administrasi['id']); ?>
                                         <div class="form-group">
                                             <?php echo form_label('Pelayanan', 'pelayanan_id'); ?>
@@ -40,35 +38,31 @@
                                         </div><br>
                                         <div class="form-group">
                                             <label class="form-label" for="nama">Nama Lengkap</label>
-                                            <input class="form-control form-control-lg" type="text" id="nama"
-                                                name="nama"
-                                                value="<?php echo isset($data_administrasi['nama']) ? $data_administrasi['nama'] : ''; ?>" />
+                                            <input class="form-control form-control-lg" type="text" id="nama" name="nama" value="<?php echo isset($data_administrasi['nama']) ? $data_administrasi['nama'] : ''; ?>" />
                                         </div>
                                         <div class="form-group"><br>
                                             <label class="form-label" for="nik">No NIK</label>
-                                            <input class="form-control form-control-lg" type="number" id="nik" name="nik"
-                                                placeholder="Masukan No NIK" style="margin-top: 10px;" maxlength="16"
-                                                oninput="validateLength(this)"
-                                                value="<?php echo isset($data_administrasi['nik']) ? $data_administrasi['nik'] : ''; ?>" />
+                                            <input class="form-control form-control-lg" type="number" id="nik" name="nik" placeholder="Masukan No NIK" style="margin-top: 10px;" maxlength="16" oninput="validateLength(this)" value="<?php echo isset($data_administrasi['nik']) ? $data_administrasi['nik'] : ''; ?>" />
                                         </div>
                                         <div class="form-group"><br>
                                             <label class="form-label" for="kk">No KK</label>
-                                            <input class="form-control form-control-lg" type="number" id="kk" name="kk"
-                                                placeholder="Masukan No KK" style="margin-top: 10px;" maxlength="16"
-                                                oninput="validateLength(this)"
-                                                value="<?php echo isset($data_administrasi['kk']) ? $data_administrasi['kk'] : ''; ?>" />
+                                            <input class="form-control form-control-lg" type="number" id="kk" name="kk" placeholder="Masukan No KK" style="margin-top: 10px;" maxlength="16" oninput="validateLength(this)" value="<?php echo isset($data_administrasi['kk']) ? $data_administrasi['kk'] : ''; ?>" />
                                         </div>
                                         <div class="form-group"><br>
                                             <label class="form-label" for="alamat">Alamat Lengkap</label>
-                                            <input class="form-control form-control-lg" type="text" id="alamat"
-                                                name="alamat"
-                                                value="<?php echo isset($data_administrasi['alamat']) ? $data_administrasi['alamat'] : ''; ?>" />
+                                            <input class="form-control form-control-lg" type="text" id="alamat" name="alamat" value="<?php echo isset($data_administrasi['alamat']) ? $data_administrasi['alamat'] : ''; ?>" />
+                                        </div>
+                                        <div class="form-group"><br>
+                                            <label class="form-label" for="no_telephone">Nomor Telephone</label>
+                                            <input class="form-control form-control-lg" type="text" id="no_telephone" name="no_telephone" value="<?php echo isset($data_administrasi['no_telephone']) ? $data_administrasi['no_telephone'] : ''; ?>" />
+                                        </div>
+                                        <div class="form-group"><br>
+                                            <label class="form-label" for="email">Email</label>
+                                            <input class="form-control form-control-lg" type="text" id="email" name="email" value="<?php echo isset($data_administrasi['email']) ? $data_administrasi['email'] : ''; ?>" />
                                         </div>
                                         <div class="form-group"><br>
                                             <label class="form-label" for="kedatangan">Tanggal Kedatangan</label>
-                                            <input class="form-control form-control-lg" type="date" id="kedatangan"
-                                                name="kedatangan"
-                                                value="<?php echo isset($data_administrasi['kedatangan']) ? $data_administrasi['kedatangan'] : ''; ?>" />
+                                            <input class="form-control form-control-lg" type="date" id="kedatangan" name="kedatangan" value="<?php echo isset($data_administrasi['kedatangan']) ? $data_administrasi['kedatangan'] : ''; ?>" />
                                         </div><br>
                                         <div class="form-group">
                                             <label class="form-label" for="status">Status</label>
@@ -107,14 +101,14 @@
 
     <?php echo view("_partials/script"); ?>
     <script>
-  function validateLength(input) {
-    input.value = input.value.replace(/\D/g, '');
-    if (input.value.length > 16) {
-      alert("Panjang melebihi batas maksimal 16 angka.");
-      input.value = input.value.slice(0, 16);
-    }
-  }
-</script>
+        function validateLength(input) {
+            input.value = input.value.replace(/\D/g, '');
+            if (input.value.length > 16) {
+                alert("Panjang melebihi batas maksimal 16 angka.");
+                input.value = input.value.slice(0, 16);
+            }
+        }
+    </script>
 </body>
 
 </html>

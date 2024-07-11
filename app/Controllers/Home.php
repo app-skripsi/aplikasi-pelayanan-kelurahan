@@ -10,28 +10,32 @@ class Home extends BaseController
     protected $dashboard_model;
     protected $login;
 
-    public function __construct(){
+    public function __construct()
+    {
         helper('form');
-		$this->dashboard_model = new DashboardModel();
+        $this->dashboard_model = new DashboardModel();
         $this->login = new UserModel();
-	}	
+    }
 
     public function index(): string
     {
-         $data['count_administrasi']  	    = $this->dashboard_model->getCountAdministrasi();
+        $data['count_administrasi']          = $this->dashboard_model->getCountAdministrasi();
         return view('index',  $data);
     }
 
 
-    public function informasiPelayanan(): string {
+    public function informasiPelayanan(): string
+    {
         return view('informasi_pelayanan');
     }
 
-    public function frontend(): string {
+    public function frontend(): string
+    {
         return view('frontend');
     }
 
-    public function login(): string {
+    public function login(): string
+    {
         return view('login');
     }
 
@@ -56,12 +60,12 @@ class Home extends BaseController
         }
     }
 
-    public function logout(): string  {
+    public function logout(): string
+    {
         session()->remove('nama_user');
         session()->remove('username');
         session()->remove('level');
         session()->setFlashData('sukses', 'Anda Berhasil Logout');
         return site_url('/login');
     }
-
 }

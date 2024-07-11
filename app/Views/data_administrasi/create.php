@@ -22,7 +22,7 @@
                                 <div class="alert alert-danger" role="alert">
                                     Whoops! Ada kesalahan saat input data, yaitu:
                                     <ul>
-                                        <?php foreach ($errors as $error): ?>
+                                        <?php foreach ($errors as $error) : ?>
                                             <li><?= esc($error) ?></li>
                                         <?php endforeach ?>
                                     </ul>
@@ -35,7 +35,7 @@
                                             <label class="form-label" for="pelayanan_id">Pilih pelayanan </label>
                                             <select class="form-control" id="pelayanan_id" name="pelayanan_id">
                                                 <option value="">Pilih pelayanan</option> <!-- Tambahkan opsi ini -->
-                                                <?php foreach ($pelayanan as $pelayananItem): ?>
+                                                <?php foreach ($pelayanan as $pelayananItem) : ?>
                                                     <option value="<?= $pelayananItem['id']; ?>">
                                                         <?= $pelayananItem['pelayanan']; ?>
                                                     </option>
@@ -44,31 +44,32 @@
                                         </div><br>
                                         <div class="form-group">
                                             <label class="form-label" for="nama">Nama Lengkap</label>
-                                            <input class="form-control form-control-lg" type="text" id="nama"
-                                                name="nama" placeholder="Masukan Nama Lengkap" />
+                                            <input class="form-control form-control-lg" type="text" id="nama" name="nama" placeholder="Masukan Nama Lengkap" />
                                         </div><br>
                                         <div class="form-group">
                                             <label class="form-label" for="nik">*<b>No NIK</b></label>
-                                            <input class="form-control form-control-lg" type="number" id="nik"
-                                                name="nik" placeholder="Masukan No NIK" style="margin-top: 10px;"
-                                                maxlength="16" oninput="validateLength(this)" required>
+                                            <input class="form-control form-control-lg" type="number" id="nik" name="nik" placeholder="Masukan No NIK" style="margin-top: 10px;" maxlength="16" oninput="validateLength(this)" required>
                                         </div>
                                         <br>
                                         <div class="form-group">
                                             <label class="form-label" for="kk">*<b>No KK</b></label>
-                                            <input class="form-control form-control-lg" type="number" id="kk" name="kk"
-                                                placeholder="Masukan No KK" style="margin-top: 10px;" maxlength="16"
-                                                oninput="validateLength(this)" required>
+                                            <input class="form-control form-control-lg" type="number" id="kk" name="kk" placeholder="Masukan No KK" style="margin-top: 10px;" maxlength="16" oninput="validateLength(this)" required>
                                         </div>
                                         <div class="form-group">
+                                            <label class="form-label" for="no_telephone">Nomor Telephone</label>
+                                            <input class="form-control form-control-lg" type="text" id="no_telephone" name="no_telephone" placeholder="Masukan Nomor Telephone" />
+                                        </div><br>
+                                        <div class="form-group">
+                                            <label class="form-label" for="email">Email</label>
+                                            <input class="form-control form-control-lg" type="email" id="email" name="email" placeholder="Masukan Email" />
+                                        </div><br>
+                                        <div class="form-group">
                                             <label class="form-label" for="alamat">Alamat Lengkap</label>
-                                            <input class="form-control form-control-lg" type="text" id="alamat"
-                                                name="alamat" placeholder="Masukan Alamat Lengkap" />
+                                            <input class="form-control form-control-lg" type="text" id="alamat" name="alamat" placeholder="Masukan Alamat Lengkap" />
                                         </div><br>
                                         <div class="form-group">
                                             <label class="form-label" for="kedatangan">Tanggal Kedatangan</label><br>
-                                            <input class="form-control form-control-lg" type="date" value="kedatangan"
-                                                name="kedatangan" />
+                                            <input class="form-control form-control-lg" type="date" value="kedatangan" name="kedatangan" />
                                         </div><br>
                                         <div class="form-group">
                                             <label class="form-label" for="status">Status</label>
@@ -101,14 +102,14 @@
 
     <?php echo view("_partials/script"); ?>
     <script>
-  function validateLength(input) {
-    input.value = input.value.replace(/\D/g, '');
-    if (input.value.length > 16) {
-      alert("Panjang melebihi batas maksimal 16 angka.");
-      input.value = input.value.slice(0, 16);
-    }
-  }
-</script>
+        function validateLength(input) {
+            input.value = input.value.replace(/\D/g, '');
+            if (input.value.length > 16) {
+                alert("Panjang melebihi batas maksimal 16 angka.");
+                input.value = input.value.slice(0, 16);
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -1,7 +1,8 @@
 <?php echo view("_partials/head"); ?>
+
 <body>
-<div class="wrapper">
-<?php echo view("_partials/navbar"); ?>
+	<div class="wrapper">
+		<?php echo view("_partials/navbar"); ?>
 		<div class="main">
 			<?php echo view("_partials/profile"); ?>
 			<main class="content">
@@ -27,7 +28,7 @@
 														</div>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3"><?php  echo $count_administrasi?></h1>
+												<h1 class="mt-1 mb-3"><?php echo $count_administrasi ?></h1>
 											</div>
 										</div>
 									</div>
@@ -40,7 +41,7 @@
 			<?php echo view("_partials/footer"); ?>
 		</div>
 	</div>
-<?php echo view("_partials/script"); ?>
+	<?php echo view("_partials/script"); ?>
 </body>
 
 </html>

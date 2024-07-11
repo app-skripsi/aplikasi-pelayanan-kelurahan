@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="shortcut icon" href="<?php echo base_url("img/icons/icon-48x48.png"); ?>" />
+    <link rel="shortcut icon" href="<?php echo base_url("img/icons/icon-48x48.png"); ?>" />
 
 
     <title>LogIn | SIADMINDUK</title>
@@ -51,7 +51,7 @@
                                     <form>
                                         <div class="mb-3">
                                             <label class="form-label">Username</label>
-                                            <input class="form-control form-control-lg" type="text" name="username"  id="username" placeholder="Masukan Username disini" />
+                                            <input class="form-control form-control-lg" type="text" name="username" id="username" placeholder="Masukan Username disini" />
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Password</label>

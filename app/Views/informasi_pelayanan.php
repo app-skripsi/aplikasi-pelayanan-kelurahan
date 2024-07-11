@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-	<link rel="shortcut icon" href="<?php echo base_url("logo.png"); ?>" />
+  <link rel="shortcut icon" href="<?php echo base_url("logo.png"); ?>" />
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -43,7 +43,9 @@
         <a href="https://www.instagram.com/kelurahanjatiwarna?igsh=MW9pYmZhYXd3cDcxZw==" class="instagram"><i class="bi bi-instagram"></i> Instagram | </a>
       </div>
     </div>
-    <marquee scrollamount="8" style="background-color: grey; color: white; font-style: Times New Roman;"><h4>Selamat menggunakan sistem pelayanan Adminduk, Silahkan pilih menu informasi layanan, untuk mengetahui informasi layanan di kelurahan jatiwarna</h4></marquee>
+    <marquee scrollamount="8" style="background-color: grey; color: white; font-style: Times New Roman;">
+      <h4>Selamat menggunakan sistem pelayanan Adminduk, Silahkan pilih menu informasi layanan, untuk mengetahui informasi layanan di kelurahan jatiwarna</h4>
+    </marquee>
   </div>
 
   <!-- ======= Header ======= -->
@@ -56,7 +58,7 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto " href="<?php  echo base_url("/"); ?>">Home</a></li>
+          <li><a class="nav-link scrollto " href="<?php echo base_url("/"); ?>">Home</a></li>
           <li><a class="nav-link scrollto active" href="<?php echo base_url("/informasi-pelayanan"); ?>">Informasi Layanan</a></li>
           <li><a class="nav-link scrollto" href="<?php echo base_url("/registrasi-pelayanan"); ?>">Registrasi Pelayanan</a></li>
         </ul>
@@ -76,108 +78,124 @@
   </section><!-- End Hero -->
 
   <main id="main"><br><br><br><br><br><br><br><br><br><br>
-  <h1 class="text-center">Informasi pelayanan adminduk di kelurahan jatiwarna </h1><br>
-  <hr>
-  <p class="text-center"><b>Tanda * Merupakan syarat yang wajib dibawa oleh warga yang ingin menggunakan layanan adminduk dikelurahan jatiwarna</b></p>
-  <hr>
+    <h1 class="text-center">Informasi pelayanan adminduk di kelurahan jatiwarna </h1><br>
+    <hr>
+    <p class="text-center"><b>Tanda * Merupakan syarat yang wajib dibawa oleh warga yang ingin menggunakan layanan adminduk dikelurahan jatiwarna</b></p>
+    <hr>
     <section id="services" class="services">
       <div class="container">
         <div class="section-title">
-        <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-heartbeat"></i></div>
-              <h4><a href="#">Pembaharuan Kartu Keluarga</a></h4>
-              <ol><h3><b>Syarat Menambah Anggota</b></h3></ol>
+          <div class="row">
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+              <div class="icon-box">
+                <div class="icon"><i class="fas fa-heartbeat"></i></div>
+                <h4><a href="#">Pembaharuan Kartu Keluarga</a></h4>
+                <ol>
+                  <h3><b>Syarat Menambah Anggota</b></h3>
+                </ol>
                 <li>*<b>1.Kartu keluarga lama (jika hilang, lampirkan surat kehilangan dari polsek beserta Fc Kartu keluarga)*</b></li>
                 <li>*<b>2.fotocopy Ktp anggota Keluarga*</b></li>
                 <li>3.fotocopy buku nikah/Akta perkawinan (jika menikah)</li>
                 <li>4.fotocopy ijasah terakhir(jika ada embaruan pendidikan)</li>
                 <li>5.fotocopy akta lahir yang ingin ditambahkan anggotanya</li>
-                <li>6.fotocopy akta lahir kelahiran anggota  keluarga(jika nama orang tua di Kartu keluarga belum tercatat dikolom nama orang tua di Kartu Keluarga)</li><br>
-              <ol><h3><b>Syarat Anggota Keluarga Berkurang</b></h3></ol>
+                <li>6.fotocopy akta lahir kelahiran anggota keluarga(jika nama orang tua di Kartu keluarga belum tercatat dikolom nama orang tua di Kartu Keluarga)</li><br>
+                <ol>
+                  <h3><b>Syarat Anggota Keluarga Berkurang</b></h3>
+                </ol>
                 <li>*<b>1.Kartu keluarga lama (jika hilang, lampirkan surat kehilangan dari polsek beserta Fc Kartu keluarga)*</b></li>
                 <li>*<b>2.fotocopy Ktp anggota Keluarga*</b></li>
                 <li>3.fotocopy buku nikah/Akta perkawinan (jika menikah)</li>
                 <li>4.fotocooy ijasah terakhir(jika ada embaruan pendidikan)</li>
                 <li>5.fotocopy akta lahir yang ingin ditambahkan anggotanya</li>
-                <li>6.fotocopy akta lahir kelahiran anggota keluarga(jika nama orang tua di Kartu keluarga belum  tercatat dikolom nama orang tua di Kartu Keluarga)</li>
+                <li>6.fotocopy akta lahir kelahiran anggota keluarga(jika nama orang tua di Kartu keluarga belum tercatat dikolom nama orang tua di Kartu Keluarga)</li>
               </div>
-          </div>
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-pills"></i></div>
-              <h4><a href="#">Syarat Membuat Surat Keterangan Pindah</a></h4>
-              <ol><p><b>Surat Keterangan Pindah (Datang)</b></p></ol>
+            </div>
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+              <div class="icon-box">
+                <div class="icon"><i class="fas fa-pills"></i></div>
+                <h4><a href="#">Syarat Membuat Surat Keterangan Pindah</a></h4>
+                <ol>
+                  <p><b>Surat Keterangan Pindah (Datang)</b></p>
+                </ol>
                 <li>*<b>Surat keterangan pindah dari daerah asal (SKPWNI yang diterbitkan Dinas Kependudukan dan Pencatatan Sipil daerah asal)</b></li>
                 <li>*<b>KK asli yang ditumpangi (apabila menumpang KK)</b></li>
                 <li>*<b>KTP-el daerah asal</b></li>
                 <li>Fotokopi surat nikah bagi yang berstatus kawin</li><br>
-              <ol><p><b>Surat Keterangan Pindah (Keluar)</b></p></ol>
+                <ol>
+                  <p><b>Surat Keterangan Pindah (Keluar)</b></p>
+                </ol>
                 <li>*<b>KK asli</b></li>
                 <li>*<b>KTP asli</b></li>
                 <li>*<b>Formulir F1.03</b></li>
                 <li>Alamat lengkap daerah tujuan (Mengisi blangko permohonan pindah)</li>
                 <li>Fotokopi surat nikah (bagi yang berstatus kawin)</li>
+              </div>
             </div>
-          </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-hospital-user"></i></div>
-              <h4><a href="#">Perekaman KTP</a></h4>
-              <ol><p><b>Syarat Perekaman KTP</b></p></ol>
-              <li>*<b>Fotocopy KK</b></li>
-              <li>*<b>Fotocopy Ijazah / Akte Kelahiran</b></li>
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+              <div class="icon-box">
+                <div class="icon"><i class="fas fa-hospital-user"></i></div>
+                <h4><a href="#">Perekaman KTP</a></h4>
+                <ol>
+                  <p><b>Syarat Perekaman KTP</b></p>
+                </ol>
+                <li>*<b>Fotocopy KK</b></li>
+                <li>*<b>Fotocopy Ijazah / Akte Kelahiran</b></li>
                 <li>Berusia 17 tahun atau sudah/pernah kawin</li>
                 <li>Fotokopi Kutipan Akta Nikah/Akta Kawin bagi penduduk yang sudah/pernah kawin</li>
                 <li>Perekaman Data Biometik (dilakukan oleh yang bersangkutan harus datang ke kantor dan tidak bisa diwakilkan).</li><br>
+              </div>
             </div>
-          </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 ">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-dna"></i></div>
-              <h4><a href="#">Pembuatan Kartu Identitas Anak</a></h4>
-              <ol><p><b>Syarat Pembuatan KIA</b></p></ol>
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 ">
+              <div class="icon-box">
+                <div class="icon"><i class="fas fa-dna"></i></div>
+                <h4><a href="#">Pembuatan Kartu Identitas Anak</a></h4>
+                <ol>
+                  <p><b>Syarat Pembuatan KIA</b></p>
+                </ol>
                 <li>*<b>Fotocopy Akta Kelahiran</b></li>
                 <li>*<b>Fotocopy KK Terbaru</b></li>
                 <li>*<b>Fotocopy E-KTP Kedua Orang Tua</b></li>
                 <li>Pas Photo Berwarna UK.2X3 (2 lbr).</li><br>
+              </div>
             </div>
-          </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-wheelchair"></i></div>
-              <h4><a href="#">Pembuatan Akte Lahir</a></h4>
-              <ol><p><b>Syarat Pembuatan Akte Lahir</b></p></ol>
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+              <div class="icon-box">
+                <div class="icon"><i class="fas fa-wheelchair"></i></div>
+                <h4><a href="#">Pembuatan Akte Lahir</a></h4>
+                <ol>
+                  <p><b>Syarat Pembuatan Akte Lahir</b></p>
+                </ol>
                 <li>*<b>KK asli</b></li>
                 <li>*<b>Formulir F2.01</b></li>
                 <li>*<b>Surat Keterangan Lahir dari Dokter/Bidan/Penolong Kelahiran (asli)</b></li>
                 <li>*<b>Fotokopi KTP-El orang tua (Pelapor adalah ayah atau ibu kandung)</b></li>
                 <li>Fotokopi KTP-El dua orang saksi</li>
                 <li>Surat Kuasa dari orang tua kandung apabila pelapor dikuasakan, disertai fokopi KTP-El penerima kuasa</li><br>
+              </div>
             </div>
-          </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-notes-medical"></i></div>
-              <h4><a href="#">Pembuatan Akte Kematian</a></h4>
-              <ol><p><b>Syarat Pembuatan Akte Kematian</b></p></ol>
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+              <div class="icon-box">
+                <div class="icon"><i class="fas fa-notes-medical"></i></div>
+                <h4><a href="#">Pembuatan Akte Kematian</a></h4>
+                <ol>
+                  <p><b>Syarat Pembuatan Akte Kematian</b></p>
+                </ol>
                 <li>*<b>KTP dan KK yang meninggal</b></li>
                 <li>*<b>Fotokopi KTP-El Pelapor (Pelapor adalah suami/istri/anak kandung) dan Fotokopi KTP-El dua orang saksi, KTP-El asli jika pelapor adalah suami/istri.</b></li>
                 <li>*<b>Formulir F2.01 </b></li>
                 <li>Surat Keterangan Kematian (Visum) dari Dokter/paramedis apabila meninggal di Rumah Sakit/Puskesmas/Poliklinik</li>
                 <li>Surat Pernyataan meninggal di Rumah oleh Pemohon diketahui dua orang saksi dan Ketua RT/RW</li>
                 <li>Surat kuasa dari suami/istri/anak kandung apabila pelapor dikuasakan.</li>
+              </div>
             </div>
+
           </div>
 
         </div>
-
-      </div>
     </section><!-- End Services Section -->
 
   </main><!-- End #main -->

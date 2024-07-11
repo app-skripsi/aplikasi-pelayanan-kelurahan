@@ -46,13 +46,15 @@ class DataAdministrasiController extends BaseController
 	{
 		$validation = \Config\Services::validation();
 		$data = array(
-			'nama' => $this->request->getPost('nama'),
-			'nik' => $this->request->getPost('nik'),
-			'kk' => $this->request->getPost('kk'),
-			'alamat' => $this->request->getPost('alamat'),
-			'kedatangan' => $this->request->getPost('kedatangan'),
-			'status' => $this->request->getPost('status'),
-			'pelayanan_id' => $this->request->getPost('pelayanan_id'),
+			'nama' 			=> $this->request->getPost('nama'),
+			'nik' 			=> $this->request->getPost('nik'),
+			'kk' 			=> $this->request->getPost('kk'),
+			'no_telephone'	=> $this->request->getPost('no_telephone'),
+			'email'			=> $this->request->getPost('email'),
+			'alamat' 		=> $this->request->getPost('alamat'),
+			'kedatangan' 	=> $this->request->getPost('kedatangan'),
+			'status' 		=> $this->request->getPost('status'),
+			'pelayanan_id' 	=> $this->request->getPost('pelayanan_id'),
 		);
 
 		if ($validation->run($data, 'data_administrasi') == FALSE) {
@@ -89,13 +91,15 @@ class DataAdministrasiController extends BaseController
 	{
 		$validation = \Config\Services::validation();
 		$data = array(
-			'nama' => $this->request->getPost('nama'),
-			'nik' => $this->request->getPost('nik'),
-			'kk' => $this->request->getPost('kk'),
-			'alamat' => $this->request->getPost('alamat'),
-			'kedatangan' => $this->request->getPost('kedatangan'),
-			'pelayanan_id' => $this->request->getPost('pelayanan_id'),
-			'status' => $this->request->getPost('status')
+			'nama' 			=> $this->request->getPost('nama'),
+			'nik' 			=> $this->request->getPost('nik'),
+			'kk' 			=> $this->request->getPost('kk'),
+			'no_telephone'	=> $this->request->getPost('no_telephone'),
+			'email'			=> $this->request->getPost('email'),
+			'alamat' 		=> $this->request->getPost('alamat'),
+			'kedatangan' 	=> $this->request->getPost('kedatangan'),
+			'pelayanan_id' 	=> $this->request->getPost('pelayanan_id'),
+			'status' 		=> $this->request->getPost('status')
 		);
 		if ($validation->run($data, 'data_administrasi') == FALSE) {
 			session()->setFlashdata('inputs', $this->request->getPost());
@@ -120,13 +124,15 @@ class DataAdministrasiController extends BaseController
 		$validation = \Config\Services::validation();
 
 		$data = array(
-			'pelayanan_id' => $this->request->getPost('pelayanan_id'),
-			'nama' => $this->request->getPost('nama'),
-			'nik' => $this->request->getPost('nik'),
-			'kk' => $this->request->getPost('kk'),
-			'alamat' => $this->request->getPost('alamat'),
-			'kedatangan' => $this->request->getPost('kedatangan'),
-			'status' => $this->request->getPost('status')
+			'pelayanan_id' 	=> $this->request->getPost('pelayanan_id'),
+			'nama' 			=> $this->request->getPost('nama'),
+			'nik' 			=> $this->request->getPost('nik'),
+			'kk' 			=> $this->request->getPost('kk'),
+			'no_telephone'	=> $this->request->getPost('no_telephone'),
+			'email'			=> $this->request->getPost('email'),
+			'alamat' 		=> $this->request->getPost('alamat'),
+			'kedatangan' 	=> $this->request->getPost('kedatangan'),
+			'status' 		=> $this->request->getPost('status')
 		);
 
 		if ($validation->run($data, 'data_administrasi') == FALSE) {
@@ -170,20 +176,22 @@ class DataAdministrasiController extends BaseController
 			->setCellValue('D3', 'KK')
 			->setCellValue('E3', 'Alamat')
 			->setCellValue('F3', 'Status')
-			->setCellValue('G3', 'Kedatangan')
-			->setCellValue('H3', 'Pelayanan');
+			->setCellValue('G3', 'Email')
+			->setCellValue('H3', 'No Telephone')
+			->setCellValue('I3', 'Kedatangan')
+			->setCellValue('J3', 'Pelayanan');
 
 
 		// Merge cells for the title
-		$spreadsheet->getActiveSheet()->mergeCells('A1:H1');
-		$spreadsheet->getActiveSheet()->mergeCells('A2:H2');
+		$spreadsheet->getActiveSheet()->mergeCells('A1:J1');
+		$spreadsheet->getActiveSheet()->mergeCells('A2:J2');
 		// Center align the title
 		$spreadsheet->getActiveSheet()->getStyle('A2')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
 		$spreadsheet->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 		$spreadsheet->getActiveSheet()->getStyle('A3')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
 		// Add yellow background and border to the title row
-		$spreadsheet->getActiveSheet()->getStyle('A1:H2')->applyFromArray([
+		$spreadsheet->getActiveSheet()->getStyle('A1:J2')->applyFromArray([
 			'fill' => [
 				'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
 				'startColor' => ['rgb' => 'FFFF00'], // Yellow background
@@ -204,11 +212,14 @@ class DataAdministrasiController extends BaseController
 		$spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(30);
 		$spreadsheet->getActiveSheet()->getColumnDimension('G')->setWidth(30);
 		$spreadsheet->getActiveSheet()->getColumnDimension('H')->setWidth(30);
+		$spreadsheet->getActiveSheet()->getColumnDimension('I')->setWidth(30);
+		$spreadsheet->getActiveSheet()->getColumnDimension('J')->setWidth(30);
+
 
 		$spreadsheet->getDefaultStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
 		// Center align column headers
-		$spreadsheet->getActiveSheet()->getStyle('B3:H3')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+		$spreadsheet->getActiveSheet()->getStyle('B3:J3')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
 		$column = 4;
 		$rowNumber = 1;
@@ -219,14 +230,15 @@ class DataAdministrasiController extends BaseController
 				->setCellValue('C' . $column, $data_administrasis['nik'])
 				->setCellValue('D' . $column, $data_administrasis['kk'])
 				->setCellValue('E' . $column, $data_administrasis['alamat'])
-				->setCellValue('F' . $column, $data_administrasis['status'])
-				->setCellValue('G' . $column, $data_administrasis['kedatangan'])
-				->setCellValue('H' . $column, $data_administrasis['nama_pelayanan'])
-			;
+				->setCellValue('F' . $column, $data_administrasis['email'])
+				->setCellValue('G' . $column, $data_administrasis['no_telephone'])
+				->setCellValue('H' . $column, $data_administrasis['status'])
+				->setCellValue('I' . $column, $data_administrasis['kedatangan'])
+				->setCellValue('J' . $column, $data_administrasis['nama_pelayanan']);
 
 			// Set auto numbering on the left side of the data
 			$spreadsheet->getActiveSheet()->setCellValue('A' . $column, $rowNumber++);
-			$spreadsheet->getActiveSheet()->getStyle('A' . $column . ':H' . $column)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+			$spreadsheet->getActiveSheet()->getStyle('A' . $column . ':J' . $column)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 			$column++;
 		}
 

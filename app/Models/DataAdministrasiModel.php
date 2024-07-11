@@ -26,8 +26,8 @@ class DataAdministrasiModel extends Model
 	public function getAllAdministrasi()
 	{
 		return $this->select('data_administrasi.*, pelayanan.pelayanan as nama_pelayanan')
-					->join('pelayanan', 'pelayanan.id = data_administrasi.pelayanan_id')
-					->findAll();
+			->join('pelayanan', 'pelayanan.id = data_administrasi.pelayanan_id')
+			->findAll();
 	}
 
 	public function insertData($data)

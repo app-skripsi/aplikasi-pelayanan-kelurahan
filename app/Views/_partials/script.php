@@ -1,4 +1,3 @@
-
 <script src="<?php echo base_url("js/app.js"); ?>"></script>
 <script src="<?php echo base_url("js/sweetalert2.js"); ?>"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -69,4 +68,3 @@
         <?php endif ?>
     });
 </script>
-
