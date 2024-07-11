@@ -129,7 +129,7 @@
                           </div><br>
                           <div class="form-group">
                             <label class="form-label" for="no_telephone">Nomor Telephone</label>
-                            <input class="form-control form-control-lg" type="text" id="no_telephone" name="no_telephone" placeholder="Masukan Nomor Telephone" style="margin-top: 10px;" required>
+                            <input class="form-control form-control-lg" type="number" id="no_telephone" name="no_telephone" placeholder="Masukan Nomor Telephone" style="margin-top: 10px;" required>
                           </div><br>
                           <div class="form-group">
                             <label class="form-label" for="email">Email</label>
