@@ -21,24 +21,18 @@ class UserModel extends Model
 				->getRowArray();
 		}
 	}
-
-
 	public function insertData($data)
 	{
 		return $this->db->table($this->table)->insert($data);
 	}
-
 	public function updateData($data, $id)
 	{
 		return $this->db->table($this->table)->update($data, ['id' => $id]);
 	}
-
-
 	public function deleteData($id)
 	{
 		return $this->db->table($this->table)->delete(['id' => $id]);
 	}
-
 	public function cek_login($username, $password)
 	{
 		return $this->db->table('users')

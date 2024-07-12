@@ -11,6 +11,8 @@
                     <th style="text-align: center">KK</th>
                     <th style="text-align: center">Alamat</th>
                     <th style="text-align: center">Status</th>
+                    <th style="text-align: center">Nomer Telephone</th>
+                    <th style="text-align: center">Email</th>
                     <th style="text-align: center">Kedatangan</th>
                     <th style="text-align: center">Pelayanan</th>
                 </tr>
@@ -24,6 +26,8 @@
                         <td style="text-align: center"><?php echo $row['kk']; ?></td>
                         <td style="text-align: center"><?php echo $row['alamat']; ?></td>
                         <td style="text-align: center"><?php echo $row['status']; ?></td>
+                        <td style="text-align: center"><?php echo $row['no_telephone']; ?></td>
+                        <td style="text-align: center"><?php echo $row['email']; ?></td>
                         <td style="text-align: center"><?php echo $row['kedatangan']; ?></td>
                         <td style="text-align: center"><?php echo $row['pelayanan']; ?></td>
                     </tr>

@@ -270,12 +270,7 @@ class DataAdministrasiController extends BaseController
 			'data_administrasi' => $this->data_administrasi->getData(),
 		);
 		$html = view('data_administrasi/pdf', $data);
-
-		// test pdf
-
-		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, 'A4', true, 'UTF-8', false);
-		// set font tulisan
-		// set document information
+		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, 'A3', true, 'UTF-8', false);
 		$pdf->SetCreator(PDF_CREATOR);
 		$pdf->SetAuthor('Yakub');
 		$pdf->SetTitle('Laporan Data Administrasi Kelurahan Jatiwarna');
@@ -288,10 +283,7 @@ class DataAdministrasiController extends BaseController
 		// set header and footer fonts
 		$pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
 		$pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
-
-		// set default monospaced font
 		$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-		// set margins
 		$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
 		$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
 		$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);

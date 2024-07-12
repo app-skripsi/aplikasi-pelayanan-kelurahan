@@ -19,8 +19,8 @@ class Home extends BaseController
 
     public function index(): string
     {
-        $data['count_administrasi']          = $this->dashboard_model->getCountAdministrasi();
-        return view('index',  $data);
+        $data['count_administrasi'] = $this->dashboard_model->getCountAdministrasi();
+        return view('index', $data);
     }
 
 

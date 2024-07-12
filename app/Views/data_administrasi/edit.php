@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="form-group"><br>
                                             <label class="form-label" for="no_telephone">Nomor Telephone</label>
-                                            <input class="form-control form-control-lg" type="text" id="no_telephone" name="no_telephone" value="<?php echo isset($data_administrasi['no_telephone']) ? $data_administrasi['no_telephone'] : ''; ?>" />
+                                            <input class="form-control form-control-lg" type="text" id="no_telephone" name="no_telephone" maxlength="12" oninput="validateNumber(this)" required value="<?php echo isset($data_administrasi['no_telephone']) ? $data_administrasi['no_telephone'] : ''; ?>" />
                                         </div>
                                         <div class="form-group"><br>
                                             <label class="form-label" for="email">Email</label>
@@ -106,6 +106,13 @@
             if (input.value.length > 16) {
                 alert("Panjang melebihi batas maksimal 16 angka.");
                 input.value = input.value.slice(0, 16);
+            }
+        }
+        function validateNumber(input) {
+            input.value = input.value.replace(/\D/g, '');
+            if (input.value.length > 12) {
+                alert("Panjang melebihi batas maksimal 12 angka.");
+                input.value = input.value.slice(0, 12);
             }
         }
     </script>

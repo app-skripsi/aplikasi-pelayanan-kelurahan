@@ -14,7 +14,7 @@
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                 </a>
             </li>
-            <?php if (session()->get('level') == 1) { ?>
+            <?php if (session()->get('level') == 1 || session()->get('level') == 2) { ?>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="<?php echo base_url('/data_administrasi'); ?>">
                         <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Data Administrasi</span>

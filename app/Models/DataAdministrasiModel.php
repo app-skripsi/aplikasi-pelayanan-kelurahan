@@ -22,19 +22,16 @@ class DataAdministrasiModel extends Model
 				->getRowArray();
 		}
 	}
-
 	public function getAllAdministrasi()
 	{
 		return $this->select('data_administrasi.*, pelayanan.pelayanan as nama_pelayanan')
 			->join('pelayanan', 'pelayanan.id = data_administrasi.pelayanan_id')
 			->findAll();
 	}
-
 	public function insertData($data)
 	{
 		return $this->db->table($this->table)->insert($data);
 	}
-
 	public function updateData($data, $id)
 	{
 		return $this->db->table($this->table)->update($data, ['id' => $id]);

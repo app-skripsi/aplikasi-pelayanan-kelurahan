@@ -12,7 +12,9 @@
                     <div class="mb-3 d-flex justify-content-between align-items-center">
                         <h1 class="h3">Data Administrasi</h1>
                         <div>
-                            <a class="btn btn-primary me-2" href="<?php echo base_url('data_administrasi/create'); ?>">Tambah Data</a>
+                            <?php if (session()->get('level') == 1) { ?>
+                                <a class="btn btn-primary me-2" href="<?php echo base_url('data_administrasi/create'); ?>">Tambah Data</a>
+                            <?php } ?>
                         </div>
                     </div>
 
@@ -55,9 +57,11 @@
                                                                 <a href="<?php echo base_url('data_administrasi/edit/' . $row['id']); ?>" class="btn btn-sm btn-secondary">
                                                                     edit
                                                                 </a>
+                                                                <?php if (session()->get('level') == 1) { ?>
                                                                 <a href="<?php echo base_url('data_administrasi/delete/' . $row['id']); ?>" class="btn btn-sm btn-danger delete-btn">
                                                                     hapus
                                                                 </a>
+                                                                <?php } ?>
                                                             </div>
                                                         </td>
                                                     </tr>
