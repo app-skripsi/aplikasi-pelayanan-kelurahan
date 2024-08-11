@@ -115,8 +115,20 @@
                         <div class="card-body">
                           <?php echo form_open_multipart('data_administrasi/pendaftaran'); ?>
                           <div class="form-group">
+                            <label class="form-label" for="nik">*<b>No NIK</b></label>
+                            <input class="form-control form-control-lg" type="number" id="nik" name="nik" placeholder="Masukan No NIK" style="margin-top: 10px;" maxlength="16" oninput="validateLength(this)" required>
+                          </div>
+                          <div class="form-group">
+                            <button type="button" class="btn btn-primary" id="cekNikButton" style="margin-top: 10px;">Cek NIK</button>
+                          </div><br>
+                          <div class="form-group">
+                            <label class="form-label" for="kk">*<b>No KK</b></label>
+                            <input class="form-control form-control-lg" type="number" id="kk" name="kk" placeholder="Masukan No KK" style="margin-top: 10px;" maxlength="16" oninput="validateLength(this)" required disabled>
+                          </div>
+                          <br>
+                          <div class="form-group">
                             <label class="form-label" for="pelayanan_id">Pilih pelayanan </label>
-                            <select class="form-control" id="pelayanan_id" name="pelayanan_id">
+                            <select class="form-control" id="pelayanan_id" name="pelayanan_id" disabled>
                               <option value="">Pilih pelayanan</option> <!-- Tambahkan opsi ini -->
                               <?php foreach ($pelayanan as $pelayananItem) : ?>
                                 <option value="<?= $pelayananItem['id']; ?>"><?= $pelayananItem['pelayanan']; ?></option>
@@ -125,37 +137,26 @@
                           </div><br>
                           <div class="form-group">
                             <label class="form-label" for="nama">Nama Lengkap</label>
-                            <input class="form-control form-control-lg" type="text" id="nama" name="nama" placeholder="Masukan Nama Lengkap" style="margin-top: 10px;" required>
+                            <input class="form-control form-control-lg" type="text" id="nama" name="nama" placeholder="Masukan Nama Lengkap" style="margin-top: 10px;" required disabled>
                           </div><br>
                           <div class="form-group">
                             <label class="form-label" for="no_telephone">Nomor Telephone</label>
-                            <input class="form-control form-control-lg" type="number" id="no_telephone" name="no_telephone" placeholder="Masukan Nomor Telephone" style="margin-top: 10px;" maxlength="12" oninput="validateNumber(this)" required>
+                            <input class="form-control form-control-lg" type="number" id="no_telephone" name="no_telephone" placeholder="Masukan Nomor Telephone" style="margin-top: 10px;" maxlength="12" oninput="validateNumber(this)" required disabled>
                           </div><br>
                           <div class="form-group">
                             <label class="form-label" for="email">Email</label>
-                            <input class="form-control form-control-lg" type="text" id="email" name="email" placeholder="Masukan Email" style="margin-top: 10px;" required>
+                            <input class="form-control form-control-lg" type="text" id="email" name="email" placeholder="Masukan Email" style="margin-top: 10px;" required disabled>
                           </div><br>
                           <div class="form-group">
-                            <label class="form-label" for="nik">*<b>No NIK</b></label>
-                            <input class="form-control form-control-lg" type="number" id="nik" name="nik" placeholder="Masukan No NIK" style="margin-top: 10px;" maxlength="16" oninput="validateLength(this)" required>
-                          </div>
-                          <br>
-                          <div class="form-group">
-                            <label class="form-label" for="kk">*<b>No KK</b></label>
-                            <input class="form-control form-control-lg" type="number" id="kk" name="kk" placeholder="Masukan No KK" style="margin-top: 10px;" maxlength="16" oninput="validateLength(this)" required>
-                          </div>
-                          <br>
-                          <div class="form-group">
                             <label class="form-label" for="alamat">Alamat Lengkap</label>
-                            <input class="form-control form-control-lg" type="text" id="alamat" name="alamat" placeholder="Masukan Alamat Lengkap" style="margin-top: 10px;" required>
+                            <input class="form-control form-control-lg" type="text" id="alamat" name="alamat" placeholder="Masukan Alamat Lengkap" style="margin-top: 10px;" required disabled>
                           </div><br>
                           <div class="form-group">
                             <label class="form-label" for="kedatangan">Tanggal Kedatangan</label>
-                            <input class="form-control form-control-lg" type="date" value="kedatangan" name="kedatangan" style="margin-top: 10px;" required> <!-- Menambahkan required di sini -->
+                            <input class="form-control form-control-lg" type="date" id="kedatangan" value="kedatangan" name="kedatangan" style="margin-top: 10px;" required disabled>
                           </div><br>
-                          <div class="text-center"> <!-- Tambahkan class text-center untuk tombol -->
+                          <div class="text-center"> 
                             <button type="submit" class="btn btn-primary">Daftar</button>
-                            <!-- Hapus class text-center di sini -->
                           </div><br>
                           </form>
                         </div>
@@ -182,6 +183,69 @@
     <script src="assets/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
+      document.getElementById('cekNikButton').addEventListener('click', function() {
+        var nik = document.getElementById('nik').value;
+
+        if (nik.length !== 16) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Peringatan',
+            text: 'NIK harus terdiri dari 16 digit',
+          });
+          return;
+        }
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/registrasi-pelayanan/ceknik', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState == 4) {
+            console.log('Response Text:', xhr.responseText); // Log the raw response
+            if (xhr.status == 200) {
+              try {
+                var response = JSON.parse(xhr.responseText);
+
+                if (response) {
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Valid',
+                    text: 'NIK valid dan terdaftar di Jatiwarna',
+                  });
+                  document.querySelectorAll('#pelayanan_id, #nama, #no_telephone, #email, #kk, #alamat, #kedatangan').forEach(function(field) {
+                    field.disabled = false;
+                  });
+                } else {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Tidak Valid',
+                    text: 'Anda Tidak Terdata Sebagai Warga Kelurahan Jatiwarna',
+                  });
+                  document.querySelectorAll('#pelayanan_id, #nama, #no_telephone, #email, #kk, #alamat, #kedatangan').forEach(function(field) {
+                    field.disabled = true;
+                  });
+                }
+              } catch (e) {
+                console.error('Error parsing JSON response: ', e);
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: 'Terjadi kesalahan saat memproses data.',
+                });
+              }
+            } else {
+              console.error('Error with request: ', xhr.status);
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Terjadi kesalahan dengan request: ' + xhr.status,
+              });
+            }
+          }
+        };
+
+        xhr.send('nik=' + encodeURIComponent(nik));
+      });
       document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('form').addEventListener('submit', function(e) {
           e.preventDefault(); // Hindari pengiriman form
@@ -197,20 +261,21 @@
       });
     </script>
     <script>
-        function validateLength(input) {
-            input.value = input.value.replace(/\D/g, '');
-            if (input.value.length > 16) {
-                alert("Panjang melebihi batas maksimal 16 angka.");
-                input.value = input.value.slice(0, 16);
-            }
+      function validateLength(input) {
+        input.value = input.value.replace(/\D/g, '');
+        if (input.value.length > 16) {
+          alert("Panjang melebihi batas maksimal 16 angka.");
+          input.value = input.value.slice(0, 16);
         }
-        function validateNumber(input) {
-            input.value = input.value.replace(/\D/g, '');
-            if (input.value.length > 12) {
-                alert("Panjang melebihi batas maksimal 12 angka.");
-                input.value = input.value.slice(0, 12);
-            }
+      }
+
+      function validateNumber(input) {
+        input.value = input.value.replace(/\D/g, '');
+        if (input.value.length > 12) {
+          alert("Panjang melebihi batas maksimal 12 angka.");
+          input.value = input.value.slice(0, 12);
         }
+      }
     </script>
 
   </body>

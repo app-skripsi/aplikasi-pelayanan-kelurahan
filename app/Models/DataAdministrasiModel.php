@@ -28,6 +28,11 @@ class DataAdministrasiModel extends Model
 			->join('pelayanan', 'pelayanan.id = data_administrasi.pelayanan_id')
 			->findAll();
 	}
+	public function checkNIK($nik)
+	{
+		return $this->db->table($this->table)->where('nik', $nik)->countAllResults() > 0;
+	}
+	
 	public function insertData($data)
 	{
 		return $this->db->table($this->table)->insert($data);

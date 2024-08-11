@@ -6,7 +6,16 @@
 <script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
-
+<!-- Vendor JS Files -->
+<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+<script src="js/app.js"></script>
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
     $(document).ready(function() {
         $('#data-administrasi-table').DataTable({
@@ -46,6 +55,43 @@
 </script>
 
 <script>
+    $(document).ready(function() {
+        $('#nik').on('blur', function() {
+            var nik = $(this).val();
+            console.log('NIK: ', nik); // Debugging
+
+            $.ajax({
+                url: '<?= base_url('/registrasi-pelayanan/ceknik') ?>',
+                type: 'POST',
+                data: {
+                    nik: nik
+                },
+                dataType: 'json',
+                success: function(response) {
+                    console.log('Response: ', response); // Debugging
+
+                    if (response) {
+                        Swal.fire(
+                            'Success!',
+                            'Anda warga Jatiwarna.',
+                            'success'
+                        );
+                        // Enable other fields
+                        $('#pelayanan_id, #nama, #no_telephone, #email, #kk, #alamat, #kedatangan').prop('disabled', false);
+                    } else {
+                        Swal.fire(
+                            'Error!',
+                            'Anda bukan warga Jatiwarna.',
+                            'error'
+                        );
+                        // Disable other fields
+                        $('#pelayanan_id, #nama, #no_telephone, #email, #kk, #alamat, #kedatangan').prop('disabled', true);
+                    }
+                }
+            });
+        });
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
         <?php if (session()->has('success')) : ?>
             Swal.fire({

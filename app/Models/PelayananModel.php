@@ -31,4 +31,5 @@ class PelayananModel extends Model
     {
         return $this->delete($id); // Menghapus data jenis berdasarkan ID
     }
+    
 }

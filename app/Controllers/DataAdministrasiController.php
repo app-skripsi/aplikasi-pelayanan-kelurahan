@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\DataAdministrasiModel;
+use App\Models\DataWargaModel;
 use App\Models\PelayananModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -13,6 +14,7 @@ class DataAdministrasiController extends BaseController
 {
 
 	protected $data_administrasi;
+	protected $data_warga;
 	protected $pelayanan;
 
 	public function __construct()
@@ -20,6 +22,7 @@ class DataAdministrasiController extends BaseController
 		helper(['form']);
 		$this->data_administrasi = new DataAdministrasiModel();
 		$this->pelayanan = new PelayananModel();
+		$this->data_warga = new DataWargaModel();
 	}
 
 	public function index()
@@ -29,7 +32,14 @@ class DataAdministrasiController extends BaseController
 			->findAll();
 		return view('data_administrasi/index', $data);
 	}
-
+	public function cekNIK()
+	{
+		$nik = $this->request->getPost('nik');
+		$isWargaJatiwarna = $this->data_warga->checkNIK($nik);
+		return $this->response
+			->setHeader('Content-Type', 'application/json')
+			->setJSON($isWargaJatiwarna);
+	}
 	public function report()
 	{
 		return view('data_rekam_administrasi/index');

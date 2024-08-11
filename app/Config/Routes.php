@@ -9,6 +9,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/index', 'Home::index');
 $routes->get('/', 'Home::frontend');
 $routes->get('/registrasi-pelayanan', 'DataAdministrasiController::registrasiPelayanan');
+$routes->post('/registrasi-pelayanan/ceknik', 'DataAdministrasiController::cekNIK');
 $routes->get('/informasi-pelayanan', 'Home::informasiPelayanan');
 $routes->get('/login', 'Home::Login');
 $routes->post('authentication', 'Home::cek_login');
