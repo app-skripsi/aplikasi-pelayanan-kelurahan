@@ -9,6 +9,7 @@ use App\Models\PelayananModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use TCPDF;
+use Twilio\Rest\Client;
 
 class DataAdministrasiController extends BaseController
 {
@@ -111,6 +112,56 @@ class DataAdministrasiController extends BaseController
 			'pelayanan_id' 	=> $this->request->getPost('pelayanan_id'),
 			'status' 		=> $this->request->getPost('status')
 		);
+
+						 // Mengambil inputan email dari user
+						 $recipientEmail = $this->request->getPost('email');
+						 $nama = $this->request->getPost('nama');
+						 $nik = $this->request->getPost('nik');
+						 $tanggalDatang = $this->request->getPost('kedatangan');
+						 $pelayananModel = new \App\Models\PelayananModel();
+						 $pelayananData = $pelayananModel->find($data['pelayanan_id']);
+						 $namaPelayanan = $pelayananData ? $pelayananData['pelayanan'] : 'Tidak diketahui';
+					 
+						 $email = \Config\Services::email();
+						 $email->setFrom('confrimappsjatiwarna@gmail.com', 'Email Notification - Siadminduk Jatiwarna');
+						 $email->setCC('achya999@gmail.com');
+						 $email->setTo($recipientEmail);
+						 $email->setSubject('Konfirmasi Pendaftaran - Siadminduk Jatiwarna');
+
+						 $message = "
+						 <p>Yth. Bapak/Ibu $nama,</p>
+					 
+						 <p>Kami ingin menginformasikan bahwa pendaftaran Anda untuk pelayanan Administrasi Kependudukan (Adminduk) telah berhasil. Terima kasih telah mempercayakan pelayanan ini kepada kami.</p>
+					 
+						 <p>Berikut adalah rincian data pendaftaran Anda:</p>
+						 <ul>
+							 <li><strong>Nama		:</strong> $nama</li>
+							 <li><strong>NIK		:</strong> $nik</li>
+							 <li><strong>Pelayanan 	:</strong> $namaPelayanan</li>
+							 <li><strong> Kedatangan:</strong> $tanggalDatang</li>
+						 </ul>
+					 
+						 <p>Mohon diperhatikan bahwa Anda diwajibkan untuk hadir pada tanggal yang telah ditentukan di atas. Pastikan untuk membawa seluruh dokumen yang diperlukan untuk mempermudah proses pelayanan.</p>
+					 
+						 <p>Jika Anda memerlukan bantuan lebih lanjut atau ada pertanyaan mengenai pendaftaran ini, jangan ragu untuk menghubungi kami melalui email ini atau melalui nomor telepon yang tersedia di website kami.</p>
+					 
+						 <p>Semoga proses pelayanan Anda berjalan lancar. Kami menantikan kedatangan Anda.</p>
+					 
+						 <p>Terima kasih atas kepercayaan Anda,</p>
+						 <p><strong>Tim Pelayanan Administrasi Kependudukan</strong></p>
+						 <p><strong>Kelurahan Jatiwarna</strong></p>
+					 ";
+
+					 
+						 $email->setMessage($message);
+				 
+						 if ($email->send()) {
+							return redirect()->to(base_url('/registrasi-pelayanan'));				
+						 } else {
+							echo $email->printDebugger(['headers']);
+							return "Failed to send email.";
+						 }
+							
 		if ($validation->run($data, 'data_administrasi') == FALSE) {
 			session()->setFlashdata('inputs', $this->request->getPost());
 			session()->setFlashdata('errors', $validation->getErrors());
@@ -122,7 +173,7 @@ class DataAdministrasiController extends BaseController
 				// Sweet Alert success
 				session()->setFlashdata('alert', 'success');
 				session()->setFlashdata('success', 'Tambah Data Berhasil');
-				return redirect()->to(base_url('/registrasi-pelayanan'));
+				return redirect()->to(base_url('/registrasi-pelayanan'));				
 			}
 		}
 	}
@@ -311,4 +362,26 @@ class DataAdministrasiController extends BaseController
 		// ouput pdf
 		$pdf->Output('Data-Administrasi.pdf', 'I');
 	}
+
+
+	public function sendEmail()
+    {
+        // Mengambil inputan email dari user
+        $recipientEmail = $this->request->getPost('email');
+
+        $email = \Config\Services::email();
+
+        $email->setFrom('confrimappsjatiwarna@gmail.com', 'Your Name');
+        $email->setTo($recipientEmail);
+        $email->setSubject('Test Email Notification');
+        $email->setMessage('<p>This is a test email sent from CodeIgniter 4.</p>');
+
+        if ($email->send()) {
+            return "Email successfully sent to " . $recipientEmail;
+        } else {
+            return "Failed to send email.";
+            // Debugging
+            // echo $email->printDebugger(['headers']);
+        }
+    }
 }
