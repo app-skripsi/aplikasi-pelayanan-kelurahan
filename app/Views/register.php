@@ -251,7 +251,7 @@
           e.preventDefault(); // Hindari pengiriman form
           Swal.fire({
             title: 'Terima kasih!',
-            text: 'Registrasi anda berhasil dilakukan, Pihak kelurahan akan memberi infomasi kepada anda melalui whatsapps admin (Done)',
+            text: 'Registrasi anda berhasil dilakukan, Pihak kelurahan akan memberi infomasi kepada anda melalui Email',
             icon: 'success',
             confirmButtonText: 'OK'
           }).then(() => {
