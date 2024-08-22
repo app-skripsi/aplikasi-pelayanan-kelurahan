@@ -97,85 +97,86 @@ class DataAdministrasiController extends BaseController
 		return view('register', $data);
 	}
 
-	public function pendaftaran()
-	{
-		$validation = \Config\Services::validation();
-		$data = array(
-			'nama' 			=> $this->request->getPost('nama'),
-			'nik' 			=> $this->request->getPost('nik'),
-			'kk' 			=> $this->request->getPost('kk'),
-			'no_telephone'	=> $this->request->getPost('no_telephone'),
-			'email'			=> $this->request->getPost('email'),
-			'alamat' 		=> $this->request->getPost('alamat'),
-			'kedatangan' 	=> $this->request->getPost('kedatangan'),
-			'pelayanan_id' 	=> $this->request->getPost('pelayanan_id'),
-			'status' 		=> $this->request->getPost('status')
-		);
+	// send email 
+	// public function pendaftaran()
+	// {
+	// 	$validation = \Config\Services::validation();
+	// 	$data = array(
+	// 		'nama' 			=> $this->request->getPost('nama'),
+	// 		'nik' 			=> $this->request->getPost('nik'),
+	// 		'kk' 			=> $this->request->getPost('kk'),
+	// 		'no_telephone'	=> $this->request->getPost('no_telephone'),
+	// 		'email'			=> $this->request->getPost('email'),
+	// 		'alamat' 		=> $this->request->getPost('alamat'),
+	// 		'kedatangan' 	=> $this->request->getPost('kedatangan'),
+	// 		'pelayanan_id' 	=> $this->request->getPost('pelayanan_id'),
+	// 		'status' 		=> $this->request->getPost('status')
+	// 	);
 
-		// Mengambil inputan email dari user
-		$recipientEmail = $this->request->getPost('email');
-		$nama = $this->request->getPost('nama');
-		$nik = $this->request->getPost('nik');
-		$tanggalDatang = $this->request->getPost('kedatangan');
-		$pelayananModel = new PelayananModel();
-		$pelayananData = $pelayananModel->find($data['pelayanan_id']);
-		$namaPelayanan = $pelayananData ? $pelayananData['pelayanan'] : 'Tidak diketahui';
+	// 	// Mengambil inputan email dari user
+	// 	$recipientEmail = $this->request->getPost('email');
+	// 	$nama = $this->request->getPost('nama');
+	// 	$nik = $this->request->getPost('nik');
+	// 	$tanggalDatang = $this->request->getPost('kedatangan');
+	// 	$pelayananModel = new PelayananModel();
+	// 	$pelayananData = $pelayananModel->find($data['pelayanan_id']);
+	// 	$namaPelayanan = $pelayananData ? $pelayananData['pelayanan'] : 'Tidak diketahui';
 
-		$email = \Config\Services::email();
-		$email->setFrom('confrimappsjatiwarna@gmail.com', 'Email Notification - Siadminduk Jatiwarna');
-		$email->setCC('achya999@gmail.com');
-		$email->setTo($recipientEmail);
-		$email->setSubject('Konfirmasi Pendaftaran - Siadminduk Jatiwarna');
+	// 	$email = \Config\Services::email();
+	// 	$email->setFrom('confrimappsjatiwarna@gmail.com', 'Email Notification - Siadminduk Jatiwarna');
+	// 	$email->setCC('achya999@gmail.com');
+	// 	$email->setTo($recipientEmail);
+	// 	$email->setSubject('Konfirmasi Pendaftaran - Siadminduk Jatiwarna');
 
-		$message = "
-						 <p>Yth. Bapak/Ibu $nama,</p>
+	// 	$message = "
+	// 					 <p>Yth. Bapak/Ibu $nama,</p>
 					 
-						 <p>Kami ingin menginformasikan bahwa pendaftaran Anda untuk pelayanan Administrasi Kependudukan (Adminduk) telah berhasil. Terima kasih telah mempercayakan pelayanan ini kepada kami.</p>
+	// 					 <p>Kami ingin menginformasikan bahwa pendaftaran Anda untuk pelayanan Administrasi Kependudukan (Adminduk) telah berhasil. Terima kasih telah mempercayakan pelayanan ini kepada kami.</p>
 					 
-						 <p>Berikut adalah rincian data pendaftaran Anda:</p>
-						 <ul>
-							 <li><strong>Nama		:</strong> $nama</li>
-							 <li><strong>NIK		:</strong> $nik</li>
-							 <li><strong>Pelayanan 	:</strong> $namaPelayanan</li>
-							 <li><strong> Kedatangan:</strong> $tanggalDatang</li>
-						 </ul>
+	// 					 <p>Berikut adalah rincian data pendaftaran Anda:</p>
+	// 					 <ul>
+	// 						 <li><strong>Nama		:</strong> $nama</li>
+	// 						 <li><strong>NIK		:</strong> $nik</li>
+	// 						 <li><strong>Pelayanan 	:</strong> $namaPelayanan</li>
+	// 						 <li><strong> Kedatangan:</strong> $tanggalDatang</li>
+	// 					 </ul>
 					 
-						 <p>Mohon diperhatikan bahwa Anda diwajibkan untuk hadir pada tanggal yang telah ditentukan di atas. Pastikan untuk membawa seluruh dokumen yang diperlukan untuk mempermudah proses pelayanan.</p>
+	// 					 <p>Mohon diperhatikan bahwa Anda diwajibkan untuk hadir pada tanggal yang telah ditentukan di atas. Pastikan untuk membawa seluruh dokumen yang diperlukan untuk mempermudah proses pelayanan.</p>
 					 
-						 <p>Jika Anda memerlukan bantuan lebih lanjut atau ada pertanyaan mengenai pendaftaran ini, jangan ragu untuk menghubungi kami melalui email ini atau melalui nomor telepon yang tersedia di website kami.</p>
+	// 					 <p>Jika Anda memerlukan bantuan lebih lanjut atau ada pertanyaan mengenai pendaftaran ini, jangan ragu untuk menghubungi kami melalui email ini atau melalui nomor telepon yang tersedia di website kami.</p>
 					 
-						 <p>Semoga proses pelayanan Anda berjalan lancar. Kami menantikan kedatangan Anda.</p>
+	// 					 <p>Semoga proses pelayanan Anda berjalan lancar. Kami menantikan kedatangan Anda.</p>
 					 
-						 <p>Terima kasih atas kepercayaan Anda,</p>
-						 <p><strong>Tim Pelayanan Administrasi Kependudukan</strong></p>
-						 <p><strong>Kelurahan Jatiwarna</strong></p>
-					 ";
+	// 					 <p>Terima kasih atas kepercayaan Anda,</p>
+	// 					 <p><strong>Tim Pelayanan Administrasi Kependudukan</strong></p>
+	// 					 <p><strong>Kelurahan Jatiwarna</strong></p>
+	// 				 ";
 
 
-		$email->setMessage($message);
+	// 	$email->setMessage($message);
 
-		if ($email->send()) {
-			return redirect()->to(base_url('/registrasi-pelayanan'));
-		} else {
-			echo $email->printDebugger(['headers']);
-			return "Failed to send email.";
-		}
+	// 	if ($email->send()) {
+	// 		return redirect()->to(base_url('/registrasi-pelayanan'));
+	// 	} else {
+	// 		echo $email->printDebugger(['headers']);
+	// 		return "Failed to send email.";
+	// 	}
 
-		if ($validation->run($data, 'data_administrasi') == FALSE) {
-			session()->setFlashdata('inputs', $this->request->getPost());
-			session()->setFlashdata('errors', $validation->getErrors());
-			return redirect()->to(base_url('/registrasi-pelayanan'));
-		} else {
-			$simpan = $this->data_administrasi->insertData($data);
-			if ($simpan) {
-				session()->setFlashdata('success', 'Update Data Berhasil');
-				// Sweet Alert success
-				session()->setFlashdata('alert', 'success');
-				session()->setFlashdata('success', 'Tambah Data Berhasil');
-				return redirect()->to(base_url('/registrasi-pelayanan'));
-			}
-		}
-	}
+	// 	if ($validation->run($data, 'data_administrasi') == FALSE) {
+	// 		session()->setFlashdata('inputs', $this->request->getPost());
+	// 		session()->setFlashdata('errors', $validation->getErrors());
+	// 		return redirect()->to(base_url('/registrasi-pelayanan'));
+	// 	} else {
+	// 		$simpan = $this->data_administrasi->insertData($data);
+	// 		if ($simpan) {
+	// 			session()->setFlashdata('success', 'Update Data Berhasil');
+	// 			// Sweet Alert success
+	// 			session()->setFlashdata('alert', 'success');
+	// 			session()->setFlashdata('success', 'Tambah Data Berhasil');
+	// 			return redirect()->to(base_url('/registrasi-pelayanan'));
+	// 		}
+	// 	}
+	// }
 
 	public function update()
 	{
@@ -361,5 +362,78 @@ class DataAdministrasiController extends BaseController
 		// ouput pdf
 		$pdf->Output('Data-Administrasi.pdf', 'I');
 	}
+
+	public function pendaftaran()
+{
+    $validation = \Config\Services::validation();
+    $data = array(
+        'nama'          => $this->request->getPost('nama'),
+        'nik'           => $this->request->getPost('nik'),
+        'kk'            => $this->request->getPost('kk'),
+        'no_telephone'  => $this->request->getPost('no_telephone'),
+        'email'         => $this->request->getPost('email'),
+        'alamat'        => $this->request->getPost('alamat'),
+        'kedatangan'    => $this->request->getPost('kedatangan'),
+        'pelayanan_id'  => $this->request->getPost('pelayanan_id'),
+        'status'        => $this->request->getPost('status')
+    );
+
+		// Mengambil inputan dari form
+		$noTelephone = $this->request->getPost('no_telephone');
+		$nama = $this->request->getPost('nama');
+		$tanggalDatang = $this->request->getPost('kedatangan');
+		$pelayananModel = new PelayananModel();
+		$pelayananData = $pelayananModel->find($data['pelayanan_id']);
+		$namaPelayanan = $pelayananData ? $pelayananData['pelayanan'] : 'Tidak diketahui';
+		$defaultNoTelephone = '6285695836255'; // Ganti dengan nomor default yang diinginkan
+
+		// Mengirim pesan WhatsApp menggunakan Fonnte API
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => 'https://api.fonnte.com/send',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'POST',
+			CURLOPT_POSTFIELDS => array(
+				'target' => $noTelephone,
+				'message' => "Halo Bapak/Ibu $nama,\n\nSelamat! Pendaftaran Anda untuk pelayanan $namaPelayanan telah berhasil kami terima.\n\nKami sangat menantikan kedatangan Anda pada tanggal $tanggalDatang. Pastikan Anda datang sesuai jadwal yang telah ditentukan untuk menghindari antrian.\n\nTerima kasih atas kepercayaan Anda menggunakan layanan kami. Semoga harimu menyenangkan!",
+				'countryCode' => '62', //optional
+			),
+			CURLOPT_HTTPHEADER => array(
+				'Authorization: 8j2cr16cogKVmT12C@xU'
+			),
+		));
+		$response = curl_exec($curl);
+
+    if (curl_errno($curl)) {
+        $error_msg = curl_error($curl);
+    }
+    curl_close($curl);
+
+    if (isset($error_msg)) {
+        return "Gagal mengirim pesan WhatsApp: $error_msg";
+    }
+    echo $response;
+
+    // Validasi data
+    if ($validation->run($data, 'data_administrasi') == FALSE) {
+        session()->setFlashdata('inputs', $this->request->getPost());
+        session()->setFlashdata('errors', $validation->getErrors());
+        return redirect()->to(base_url('/registrasi-pelayanan'));
+    } else {
+        $simpan = $this->data_administrasi->insertData($data);
+        if ($simpan) {
+            session()->setFlashdata('success', 'Update Data Berhasil');
+            // Sweet Alert success
+            session()->setFlashdata('alert', 'success');
+            session()->setFlashdata('success', 'Tambah Data Berhasil');
+            return redirect()->to(base_url('/registrasi-pelayanan'));
+        }
+    }
+}
 
 }
