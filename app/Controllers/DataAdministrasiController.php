@@ -381,11 +381,17 @@ class DataAdministrasiController extends BaseController
 		// Mengambil inputan dari form
 		$noTelephone = $this->request->getPost('no_telephone');
 		$nama = $this->request->getPost('nama');
+		$nik  = $this->request->getPost('nik');
+		$kk   = $this->request->getPost('kk');
+		$alamat = $this->request->getPost('alamat');
+		$status = $this->request->getPost('status');
 		$tanggalDatang = $this->request->getPost('kedatangan');
+
 		$pelayananModel = new PelayananModel();
 		$pelayananData = $pelayananModel->find($data['pelayanan_id']);
 		$namaPelayanan = $pelayananData ? $pelayananData['pelayanan'] : 'Tidak diketahui';
-		$defaultNoTelephone = '6285695836255'; // Ganti dengan nomor default yang diinginkan
+		//$defaultNoTelephone = '6285215897250';
+		$defaultNoTelephone = '6289669411581';
 
 		// Mengirim pesan WhatsApp menggunakan Fonnte API
 		$curl = curl_init();
@@ -400,7 +406,14 @@ class DataAdministrasiController extends BaseController
 			CURLOPT_CUSTOMREQUEST => 'POST',
 			CURLOPT_POSTFIELDS => array(
 				'target' => $noTelephone,
-				'message' => "Halo Bapak/Ibu $nama,\n\nSelamat! Pendaftaran Anda untuk pelayanan $namaPelayanan telah berhasil kami terima.\n\nKami sangat menantikan kedatangan Anda pada tanggal $tanggalDatang. Pastikan Anda datang sesuai jadwal yang telah ditentukan untuk menghindari antrian.\n\nTerima kasih atas kepercayaan Anda menggunakan layanan kami. Semoga harimu menyenangkan!",
+				'message' => "Hallo Pamor, warga Kelurahan Jatiwarna bernama $nama dengan alamat $alamat telah mendaftar untuk pelayanan $namaPelayanan silakan anda jemput bola untuk pengambilan berkas persyaratan ke alamat pemohon agar bisa segera diproses \n Terimakasih",
+				'countryCode' => '62', //optional
+			),
+			CURLOPT_POSTFIELDS => array(
+				'target' => $defaultNoTelephone,
+				'message' => "Terimakasih anda telah mendaftar untuk pelayanan $namaPelayanan aplikasi SIADMINDUK Kelurahan Jatiwarna. Harap Tunggu petugas PAMOR kami akan menjemput berkas ke rumah anda, untuk proses selanjutnya,mohon berkas segera disiapkan.\n
+					Terimakasih
+				",
 				'countryCode' => '62', //optional
 			),
 			CURLOPT_HTTPHEADER => array(
