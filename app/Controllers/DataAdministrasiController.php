@@ -390,11 +390,12 @@ class DataAdministrasiController extends BaseController
 		$pelayananModel = new PelayananModel();
 		$pelayananData = $pelayananModel->find($data['pelayanan_id']);
 		$namaPelayanan = $pelayananData ? $pelayananData['pelayanan'] : 'Tidak diketahui';
-		//$defaultNoTelephone = '6285215897250';
-		$defaultNoTelephone = '6289669411581';
+		$defaultNoTelephone = '6285215897250';
+		//$defaultNoTelephone = '6289669411581';
 
 		// Mengirim pesan WhatsApp menggunakan Fonnte API
 		$curl = curl_init();
+
 		curl_setopt_array($curl, array(
 			CURLOPT_URL => 'https://api.fonnte.com/send',
 			CURLOPT_RETURNTRANSFER => true,
@@ -406,21 +407,25 @@ class DataAdministrasiController extends BaseController
 			CURLOPT_CUSTOMREQUEST => 'POST',
 			CURLOPT_POSTFIELDS => array(
 				'target' => $noTelephone,
-				'message' => "Hallo Pamor, warga Kelurahan Jatiwarna bernama $nama dengan alamat $alamat telah mendaftar untuk pelayanan $namaPelayanan silakan anda jemput bola untuk pengambilan berkas persyaratan ke alamat pemohon agar bisa segera diproses \n Terimakasih",
-				'countryCode' => '62', //optional
-			),
-			CURLOPT_POSTFIELDS => array(
-				'target' => $defaultNoTelephone,
-				'message' => "Terimakasih anda telah mendaftar untuk pelayanan $namaPelayanan aplikasi SIADMINDUK Kelurahan Jatiwarna. Harap Tunggu petugas PAMOR kami akan menjemput berkas ke rumah anda, untuk proses selanjutnya,mohon berkas segera disiapkan.\n
-					Terimakasih
-				",
-				'countryCode' => '62', //optional
+				'message' => "Hallo Pamor, warga Kelurahan Jatiwarna bernama $nama dengan alamat $alamat telah mendaftar untuk pelayanan $namaPelayanan. Silakan anda jemput bola untuk pengambilan berkas persyaratan ke alamat pemohon agar bisa segera diproses.\nTerimakasih.",
+				'countryCode' => '62', // optional
 			),
 			CURLOPT_HTTPHEADER => array(
 				'Authorization: 8j2cr16cogKVmT12C@xU'
 			),
 		));
-		$response = curl_exec($curl);
+		
+		$response1 = curl_exec($curl);
+		
+		// Reset the options to send the second message
+		curl_setopt($curl, CURLOPT_POSTFIELDS, array(
+			'target' => $defaultNoTelephone,
+			'message' => "Terimakasih anda telah mendaftar untuk pelayanan $namaPelayanan melalui aplikasi SIADMINDUK Kelurahan Jatiwarna. Harap tunggu, petugas PAMOR kami akan menjemput berkas ke rumah anda. Untuk proses selanjutnya, mohon berkas segera disiapkan.\nTerimakasih.",
+			'countryCode' => '62', // optional
+		));
+		
+		$response2 = curl_exec($curl);
+		
 
     if (curl_errno($curl)) {
         $error_msg = curl_error($curl);
@@ -430,7 +435,8 @@ class DataAdministrasiController extends BaseController
     if (isset($error_msg)) {
         return "Gagal mengirim pesan WhatsApp: $error_msg";
     }
-    echo $response;
+    echo $response1;
+	echo $response2;
 
     // Validasi data
     if ($validation->run($data, 'data_administrasi') == FALSE) {
