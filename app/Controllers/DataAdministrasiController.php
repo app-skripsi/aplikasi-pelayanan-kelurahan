@@ -390,8 +390,8 @@ class DataAdministrasiController extends BaseController
 		$pelayananModel = new PelayananModel();
 		$pelayananData = $pelayananModel->find($data['pelayanan_id']);
 		$namaPelayanan = $pelayananData ? $pelayananData['pelayanan'] : 'Tidak diketahui';
-		//$defaultNoTelephone = '6285215897250';
-		$defaultNoTelephone = '6285925388380';
+		$defaultNoTelephone = '6285215897250';
+		//$defaultNoTelephone = '6285925388380';
 	
 		//$defaultNoTelephone = '6289669411581';
 
