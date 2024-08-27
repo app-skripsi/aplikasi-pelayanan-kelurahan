@@ -390,7 +390,9 @@ class DataAdministrasiController extends BaseController
 		$pelayananModel = new PelayananModel();
 		$pelayananData = $pelayananModel->find($data['pelayanan_id']);
 		$namaPelayanan = $pelayananData ? $pelayananData['pelayanan'] : 'Tidak diketahui';
-		$defaultNoTelephone = '6285215897250';
+		//$defaultNoTelephone = '6285215897250';
+		$defaultNoTelephone = '6285925388380';
+	
 		//$defaultNoTelephone = '6289669411581';
 
 		// Mengirim pesan WhatsApp menggunakan Fonnte API
@@ -407,7 +409,7 @@ class DataAdministrasiController extends BaseController
 			CURLOPT_CUSTOMREQUEST => 'POST',
 			CURLOPT_POSTFIELDS => array(
 				'target' => $noTelephone,
-				'message' => "Hallo Pamor, warga Kelurahan Jatiwarna bernama $nama dengan alamat $alamat telah mendaftar untuk pelayanan $namaPelayanan. Silakan anda jemput bola untuk pengambilan berkas persyaratan ke alamat pemohon agar bisa segera diproses.\nTerimakasih.",
+				'message' => "Terimakasih anda telah mendaftar untuk pelayanan $namaPelayanan melalui aplikasi SIADMINDUK Kelurahan Jatiwarna. Harap tunggu, petugas PAMOR kami akan menjemput berkas ke rumah anda. Untuk proses selanjutnya, mohon berkas segera disiapkan.\nTerimakasih.",
 				'countryCode' => '62', // optional
 			),
 			CURLOPT_HTTPHEADER => array(
@@ -420,10 +422,10 @@ class DataAdministrasiController extends BaseController
 		// Reset the options to send the second message
 		curl_setopt($curl, CURLOPT_POSTFIELDS, array(
 			'target' => $defaultNoTelephone,
-			'message' => "Terimakasih anda telah mendaftar untuk pelayanan $namaPelayanan melalui aplikasi SIADMINDUK Kelurahan Jatiwarna. Harap tunggu, petugas PAMOR kami akan menjemput berkas ke rumah anda. Untuk proses selanjutnya, mohon berkas segera disiapkan.\nTerimakasih.",
+			'message' => "Hallo Pamor, warga Kelurahan Jatiwarna bernama $nama dengan alamat $alamat telah mendaftar untuk pelayanan $namaPelayanan. Silakan anda jemput bola untuk pengambilan berkas persyaratan ke alamat pemohon agar bisa segera diproses.\nTerimakasih.",
 			'countryCode' => '62', // optional
 		));
-		
+		$response1 = curl_exec($curl);
 		$response2 = curl_exec($curl);
 		
 
